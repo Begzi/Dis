@@ -1,0 +1,1 @@
+pyuic5.exe -x C:\py\Dis\main_window.ui -o C:\py\Dis\main_window.py
