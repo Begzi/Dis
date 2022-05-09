@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\py\Dis\dialog_window.ui'
+# Form implementation generated from reading ui file 'D:\Dis\dialog_window.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -17,7 +17,23 @@ class Ui_DialogGroup(object):
         DialogGroup.resize(549, 365)
         self.gridLayout = QtWidgets.QGridLayout(DialogGroup)
         self.gridLayout.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
+        self.gridLayout.setContentsMargins(-1, 30, 9, -1)
         self.gridLayout.setObjectName("gridLayout")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.label = QtWidgets.QLabel(DialogGroup)
+        self.label.setObjectName("label")
+        self.horizontalLayout_2.addWidget(self.label)
+        self.lineEditNameGroup = QtWidgets.QLineEdit(DialogGroup)
+        self.lineEditNameGroup.setObjectName("lineEditNameGroup")
+        self.horizontalLayout_2.addWidget(self.lineEditNameGroup)
+        self.gridLayout.addLayout(self.horizontalLayout_2, 1, 0, 1, 1)
+        self.buttonBox = QtWidgets.QDialogButtonBox(DialogGroup)
+        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
+        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
+        self.buttonBox.setObjectName("buttonBox")
+        self.gridLayout.addWidget(self.buttonBox, 2, 0, 1, 1)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
         self.horizontalLayout.setObjectName("horizontalLayout")
@@ -25,29 +41,16 @@ class Ui_DialogGroup(object):
         self.comboBox.setObjectName("comboBox")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
+        self.comboBox.addItem("")
         self.horizontalLayout.addWidget(self.comboBox)
-        self.lineEdit = QtWidgets.QLineEdit(DialogGroup)
-        self.lineEdit.setObjectName("lineEdit")
-        self.horizontalLayout.addWidget(self.lineEdit)
-        self.lineEdit_2 = QtWidgets.QLineEdit(DialogGroup)
-        self.lineEdit_2.setObjectName("lineEdit_2")
-        self.horizontalLayout.addWidget(self.lineEdit_2)
+        self.lineEditStartIP = QtWidgets.QLineEdit(DialogGroup)
+        self.lineEditStartIP.setObjectName("lineEditStartIP")
+        self.horizontalLayout.addWidget(self.lineEditStartIP)
+        self.lineEditEndIP = QtWidgets.QLineEdit(DialogGroup)
+        self.lineEditEndIP.setEnabled(True)
+        self.lineEditEndIP.setObjectName("lineEditEndIP")
+        self.horizontalLayout.addWidget(self.lineEditEndIP)
         self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 1)
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_2.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.label = QtWidgets.QLabel(DialogGroup)
-        self.label.setObjectName("label")
-        self.horizontalLayout_2.addWidget(self.label)
-        self.lineEdit_3 = QtWidgets.QLineEdit(DialogGroup)
-        self.lineEdit_3.setObjectName("lineEdit_3")
-        self.horizontalLayout_2.addWidget(self.lineEdit_3)
-        self.gridLayout.addLayout(self.horizontalLayout_2, 1, 0, 1, 1)
-        self.buttonBox = QtWidgets.QDialogButtonBox(DialogGroup)
-        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
-        self.buttonBox.setObjectName("buttonBox")
-        self.gridLayout.addWidget(self.buttonBox, 2, 0, 1, 1)
 
         self.retranslateUi(DialogGroup)
         self.buttonBox.accepted.connect(DialogGroup.accept)
@@ -57,7 +60,20 @@ class Ui_DialogGroup(object):
     def retranslateUi(self, DialogGroup):
         _translate = QtCore.QCoreApplication.translate
         DialogGroup.setWindowTitle(_translate("DialogGroup", "Dialog"))
+        self.label.setText(_translate("DialogGroup", "Название группы:"))
+        self.lineEditNameGroup.setText(_translate("DialogGroup", "DefaultName"))
         self.comboBox.setItemText(0, _translate("DialogGroup", "Диапазон"))
         self.comboBox.setItemText(1, _translate("DialogGroup", "IP/маска сети"))
-        self.label.setText(_translate("DialogGroup", "Название группы:"))
+        self.comboBox.setItemText(2, _translate("DialogGroup", "Выбрать узлы"))
+        self.lineEditStartIP.setText(_translate("DialogGroup", "0.0.0.0"))
+        self.lineEditEndIP.setText(_translate("DialogGroup", "192.168.88.240"))
 
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    DialogGroup = QtWidgets.QDialog()
+    ui = Ui_DialogGroup()
+    ui.setupUi(DialogGroup)
+    DialogGroup.show()
+    sys.exit(app.exec_())

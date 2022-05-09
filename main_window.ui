@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>922</width>
-    <height>693</height>
+    <width>690</width>
+    <height>584</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -57,6 +57,9 @@
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
           <widget class="QPushButton" name="groupVal">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Группировать узлы</string>
            </property>

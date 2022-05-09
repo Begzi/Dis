@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\py\Dis\main_window.ui'
+# Form implementation generated from reading ui file 'D:\Dis\main_window.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_FormMain(object):
     def setupUi(self, FormMain):
         FormMain.setObjectName("FormMain")
-        FormMain.resize(922, 693)
+        FormMain.resize(690, 584)
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(FormMain)
         self.verticalLayout_2.setContentsMargins(-1, 50, -1, -1)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
@@ -41,6 +41,7 @@ class Ui_FormMain(object):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.groupVal = QtWidgets.QPushButton(self.val)
+        self.groupVal.setEnabled(False)
         self.groupVal.setObjectName("groupVal")
         self.horizontalLayout_2.addWidget(self.groupVal)
         self.openVul = QtWidgets.QPushButton(self.val)
