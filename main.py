@@ -4,6 +4,8 @@ import main_window
 import dialog_window
 import ipaddress
 import pandas as pd
+import sqlite3
+from sqlite3 import Error
 
 class ClssDialog(QtWidgets.QDialog):
     def __init__(self, parent=None):
@@ -39,15 +41,36 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.setupUi(self)     # Инициализация GUI
         self.dialog = 0
         self.all_vul = {}
+        self.conn = None
 
         self.ui.openVul.clicked.connect(self.openDialogOpenVul) # Открыть новую форму
         self.ui.groupVal.clicked.connect(self.openDialogGroupVal) # Открыть новую форму
 
     def openDialogOpenVul(self):
-        # text = 'asd\nasd'
-        # for i in range(0, 100):
-        #     text += 'asd\nasd'
-        # self.ui.textEdit.setText(text)           Надо работать с BD!!!!
+
+        try:
+            self.conn = sqlite3.connect('db.sqlite3')
+            print("Connection to SQLite DB successful")
+        except Error as e:
+            print(f"The error '{e}' occurred")
+
+        cur = self.conn.cursor()
+        # cur.execute(
+        #     '''CREATE TABLE tasks (taskid INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, notes TEXT, taskcust INTEGER, FOREIGN KEY(taskcust) REFERENCES customer(custid))''')
+        cur.execute('SELECT * FROM report_node;')
+        all_results = cur.fetchall()  #Картежи!
+        print(all_results)
+        for i in all_results:
+            print(i[1])
+            cur.execute(
+                'SELECT * FROM report_group_vulnerability WHERE report_group_vulnerability.node_id = '+ str(i[0]) +';')
+            all_results1 = cur.fetchall()
+            print(all_results1)
+        cur.execute('SELECT * FROM report_group_vulnerability, report_node WHERE report_group_vulnerability.node_id = report_node.id;')
+        all_results = cur.fetchall()
+        print(all_results)
+
+
         vul1 = { 'name': 'Разглашение информации (SWEET32)', 'shortdescription': 'Атака Sweet32 позволяет расшифровать данные HTTPS-соединения, если используется шифр 3DES.',
                  'description': 'Уязвимость позволяет в ходе атаки по принципу "человек посередине" (MITM),',
                  'solution':'Необходимо отключить поддержку шифров 3DES. Если ваша система поддерживает только DES-шифрование, необходимо установить обновление, поддерживающее более надежное шифрование.',
@@ -99,6 +122,7 @@ class MyWin(QtWidgets.QMainWindow):
         row = index.row()
 
 
+        item = {}
         if parent_row == -1:
             print('1')
             check_first_lvl_is_group = ''
@@ -110,9 +134,9 @@ class MyWin(QtWidgets.QMainWindow):
                 i += 1
             try:
                 check_first_lvl_is_group = ipaddress.ip_address(check_first_lvl_is_group)
-                self.firstLvlTree(row)
+                item = self.firstLvlTree(row)
             except:
-                self.firstLvlTreeGroup(row)
+                item = self.firstLvlTreeGroup(row)
         elif parent_parent_row == -1:
             print('2')
             check_first_lvl_is_group = ''
@@ -124,9 +148,9 @@ class MyWin(QtWidgets.QMainWindow):
                 i += 1
             try:
                 check_first_lvl_is_group = ipaddress.ip_address(check_first_lvl_is_group)
-                self.secondLvlTree(row, parent_row)
+                item = self.secondLvlTree(row, parent_row)
             except:
-                self.secondLvlTreeGroup(row, parent_row)
+                item = self.secondLvlTreeGroup(row, parent_row)
         elif parent_parent_parent_row == -1:
             print('3')
             check_first_lvl_is_group = ''
@@ -138,20 +162,28 @@ class MyWin(QtWidgets.QMainWindow):
                 i += 1
             try:
                 check_first_lvl_is_group = ipaddress.ip_address(check_first_lvl_is_group)
-                self.thirdLvlTree(row, parent_row, parent_parent_row)
+                item = self.thirdLvlTree(row, parent_row, parent_parent_row)
             except:
-                self.thirdLvlTreeGroup(row, parent_row, parent_parent_row)
+                item = self.thirdLvlTreeGroup(row, parent_row, parent_parent_row)
         elif parent_parent_parent_parent_row == -1:
             print('4')
-            self.fourthLvlTree(row, parent_row, parent_parent_row, parent_parent_parent_row)
+            item = self.fourthLvlTreeGroup(row, parent_row, parent_parent_row, parent_parent_parent_row)
         else:
             self.errorMessange('Какая-то ошибка с treeView!')
 
+        text = ''
+        for key in item:
+            text += str(key) + '\n' + '\t' + str(item[key]) + '\n'
+        self.ui.textEdit.setText(text)
+
+    def firstLvlTreeGroup(self, row):
+        item = {}
+        item['Краткое описание'] = 'Будут записи о группах. Нужн подумать какую информацию выводить'
+        return item
 
     def firstLvlTree(self, row):
-
-        text = 'Будут записи о узлах, количеств уязмиостей и их среднее значение'
-        self.ui.textEdit.setText(text)
+        item = {}
+        item['Краткое описание'] = 'Будут записи о узлах, количеств уязмиостей и их среднее значение'
 
         check = pd.DataFrame.from_dict(self.all_vul)
         print(check)
@@ -160,89 +192,75 @@ class MyWin(QtWidgets.QMainWindow):
         print('check')
         print(check.index[0])
         # print(check['DefaultName']['192.168.88.220'])
-
-    def firstLvlTreeGroup(self, row):
-        text = 'Смысл группировки тоже надо обдумать лучше'
-        self.ui.textEdit.setText(text)
-
-
-    def secondLvlTree(self, row, parent_row):
-
-        text = 'Будут записи о уязвимостяй в порте и названия протокола'
-        self.ui.textEdit.setText(text)
+        return item
 
     def secondLvlTreeGroup(self, row, parent_row):
+        item ={}
+        l = 0
+        item = {}
+        for group in self.all_vul:
+            if l == parent_row:
+                item = self.firstLvlTree( row)
+            l += 1
+        return item
 
-        text = 'Будут записи как на 1 уровне не группы'
-        self.ui.textEdit.setText(text)
+    def secondLvlTree(self, row, parent_row):
+        item = {}
+        i = 0
+        j = 0
+        for key in self.all_vul:
+            if i == parent_row:
+                for name in self.all_vul[key]:
+                    if j == row:
+                        ip_key = key
+                        port_name = name
+                        break
+                    j += 1
+            i += 1
+        item['Количество уязвимостей'] = len(self.all_vul[ip_key][port_name])
+        print((self.all_vul[ip_key][port_name]))
+        item['Краткое описание'] = 'Будут записи о уязвимостяй в порте и названия протокола'
+        return item
+
+    def thirdLvlTreeGroup(self, row, parent_row, parent_parent_row):
+        item ={}
+        l = 0
+        item = {}
+        for group in self.all_vul:
+            if l == parent_parent_row:
+                item = self.secondLvlTree( row, parent_row)
+            l += 1
+        return item
 
     def thirdLvlTree(self, row, parent_row, parent_parent_row):
         i = 0
         j = 0
         k = 0
-        item = {}  #Ошибка в логике. Самые первые род, если не 1 уяз
+        item = {}
         for key in self.all_vul:
-            print(key)
             if i == parent_parent_row:
-                print(key)
                 for name in self.all_vul[key]:
                     if j == parent_row:
-                        print(name)
                         for vul in self.all_vul[key][name]:
-                            print(vul)
                             if k == row:
-                                print(vul)
                                 item = vul
                                 break
                             k += 1
                     j += 1
 
             i+=1
-        text = ''
 
-        for key in item:
-            text += str(key) + '\n' + '\t' + str(item[key]) + '\n'
+        return item
 
-        self.ui.textEdit.setText(text)
 
-    def thirdLvlTreeGroup(self, row, parent_row, parent_parent_row):
-
-        text = 'Будут записи как на 2 уровне не группы'
-        self.ui.textEdit.setText(text)
-
-    def fourthLvlTree(self, row, parent_row, parent_parent_row, parent_parent_parent_row):
-        i = 0
-        j = 0
-        k = 0
+    def fourthLvlTreeGroup(self, row, parent_row, parent_parent_row, parent_parent_parent_row):
         l = 0
         item = {}
         for group in self.all_vul:
             if l == parent_parent_parent_row:
-                for key in self.all_vul[group]:
-                    print(key)
-                    if i == parent_parent_row:
-                        print(key)
-                        for name in self.all_vul[group][key]:
-                            if j == parent_row:
-                                print(name)
-                                for vul in self.all_vul[group][key][name]:
-                                    print(vul)
-                                    if k == row:
-                                        print(vul)
-                                        item = vul
-                                        break
-                                    k += 1
-                            j += 1
-
-                    i+=1
+                item = self.thirdLvlTree(row, parent_row, parent_parent_row)
             l += 1
-
-        text = ''
-
-        for key in item:
-            text += str(key) + '\n' + '\t' + str(item[key]) + '\n'
-
-        self.ui.textEdit.setText(text)
+        return item
 
     def openDialogGroupVal(self):
         dialog = ClssDialog(self)
@@ -332,13 +350,6 @@ class MyWin(QtWidgets.QMainWindow):
                                 child.appendRow(child_child)
                             parent.appendRow(child)
                         model.appendRow(parent)
-
-
-                print(dialog.di.lineEditStartIP.text())
-                print(dialog.di.lineEditEndIP.text())
-                print(dialog.di.lineEditNameGroup.text())
-                print(dialog.di.comboBox.currentText())
-                print(dialog.di.comboBox.currentIndex())
             except:
                 self.errorMessange('Вы ввели не корректные данные')
 
