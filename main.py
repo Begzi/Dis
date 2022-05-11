@@ -191,7 +191,6 @@ class MyWin(QtWidgets.QMainWindow):
         print(check.columns[0])
         print('check')
         print(check.index[0])
-        # print(check['DefaultName']['192.168.88.220'])
         return item
 
     def secondLvlTreeGroup(self, row, parent_row):
