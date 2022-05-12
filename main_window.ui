@@ -19,8 +19,11 @@
    </property>
    <item>
     <widget class="QTabWidget" name="tabWidget">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="val">
       <attribute name="title">
@@ -117,101 +120,6 @@
       <attribute name="title">
        <string>Правила МЭ</string>
       </attribute>
-      <widget class="QWidget" name="widget_3" native="true">
-       <property name="geometry">
-        <rect>
-         <x>110</x>
-         <y>20</y>
-         <width>481</width>
-         <height>411</height>
-        </rect>
-       </property>
-       <widget class="QWidget" name="">
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_8">
-           <item>
-            <widget class="QLabel" name="nameVul_3">
-             <property name="text">
-              <string>Название уязвимости</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="shortDescription_3">
-             <property name="text">
-              <string>Краткое описание:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="shortDescriptionText_3">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="description_3">
-             <property name="text">
-              <string>Описание</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="descriptionText_3">
-             <property name="text">
-              <string>layotScretch yWidget надо менять в завимости от текста</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="solution_3">
-             <property name="text">
-              <string>Решение</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="solutuinText_3">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="cvss2_3">
-             <property name="text">
-              <string>cvss2</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="cvss2Text_3">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="cvss3_3">
-             <property name="text">
-              <string>cvss3</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="cvss3Text_3">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </widget>
-      </widget>
      </widget>
      <widget class="QWidget" name="tab_3">
       <attribute name="title">

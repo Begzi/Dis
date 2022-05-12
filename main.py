@@ -3,7 +3,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import main_window
 import dialog_window
 import ipaddress
-import pandas as pd
+import function
 import sqlite3
 from sqlite3 import Error
 
@@ -48,11 +48,11 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.groupVal.clicked.connect(self.openDialogGroupVal)  # Открыть новую форму
         self.ui.editTextEdit.clicked.connect(self.editText)  # Открыть новую форму
         self.ui.saveTextEdit.clicked.connect(self.saveEditText)  # Открыть новую форму
-        self.ui.cancelTextEdit.clicked.connect(self.cancelEditText)  # Открыть новую форму
+        self.ui.cancelTextEdit.clicked.connect(lambda: self.cancelEditText(True))  # Открыть новую форму
 
     def openDialogOpenVul(self):
         if not self.ui.cancelTextEdit.isHidden():
-            self.cancelEditText()
+            self.cancelEditText(True)
         self.all_vul = {}
         try:
             self.conn = sqlite3.connect('db.sqlite3')
@@ -91,9 +91,9 @@ class MyWin(QtWidgets.QMainWindow):
                         'SELECT * FROM report_cvss3 WHERE report_cvss3.id = ' + str(
                             result_vul[6]) + ';')
                     cvss3 = cur.fetchone()
-                    vulnerubility = {'name': result_vul[1], 'shortdescription': result_vul[2],
+                    vulnerubility = {'name': result_vul[1], 'short_description': result_vul[2],
                                      'description': result_vul[3],
-                                     'solution': result_vul[4], 'cvss2': cvss2[1], 'cvss3': cvss3[1]}
+                                     'solution': result_vul[4], 'cvss2_id': cvss2[1], 'cvss3_id': cvss3[1], 'id': result_vul[0]}
                     tmp_all_vul.append(vulnerubility)
 
                 tmp_port_dict[str(port[1]) + '-' + str(port[2]) + '/' + str(port[3])] = tmp_all_vul
@@ -119,9 +119,6 @@ class MyWin(QtWidgets.QMainWindow):
 
     def treeFunction(self, index):  # 4 разных ситуаций нужно описать.
 
-        print(index.parent().parent().row())
-        print(index.parent().row())
-        print(index.row())
 
         parent_parent_parent_parent_row = index.parent().parent().parent().parent().row()
         parent_parent_parent_row = index.parent().parent().parent().row()
@@ -131,7 +128,7 @@ class MyWin(QtWidgets.QMainWindow):
 
         if not self.ui.cancelTextEdit.isHidden():
             self.textEdit = ''
-            self.cancelEditText()
+            self.cancelEditText(True)
         item = {}
         if parent_row == -1:
             print('1')
@@ -144,9 +141,9 @@ class MyWin(QtWidgets.QMainWindow):
                 i += 1
             try:
                 check_first_lvl_is_group = ipaddress.ip_address(check_first_lvl_is_group)
-                item = self.firstLvlTree(row, self.all_vul)
+                item = function.firstLvlTree(row, self.all_vul)
             except:
-                item = self.firstLvlTreeGroup(row, self.all_vul)
+                item = function.firstLvlTreeGroup(row, self.all_vul)
         elif parent_parent_row == -1:
             print('2')
             check_first_lvl_is_group = ''
@@ -158,9 +155,9 @@ class MyWin(QtWidgets.QMainWindow):
                 i += 1
             try:
                 check_first_lvl_is_group = ipaddress.ip_address(check_first_lvl_is_group)
-                item = self.secondLvlTree(row, parent_row, self.all_vul)
+                item = function.secondLvlTree(row, parent_row, self.all_vul)
             except:
-                item = self.secondLvlTreeGroup(row, parent_row, self.all_vul)
+                item = function.secondLvlTreeGroup(row, parent_row, self.all_vul)
         elif parent_parent_parent_row == -1:
             print('3')
             check_first_lvl_is_group = ''
@@ -172,103 +169,20 @@ class MyWin(QtWidgets.QMainWindow):
                 i += 1
             try:
                 check_first_lvl_is_group = ipaddress.ip_address(check_first_lvl_is_group)
-                item = self.thirdLvlTree(row, parent_row, parent_parent_row, self.all_vul)
+                item = function.thirdLvlTree(row, parent_row, parent_parent_row, self.all_vul)
             except:
-                item = self.thirdLvlTreeGroup(row, parent_row, parent_parent_row, self.all_vul)
+                item = function.thirdLvlTreeGroup(row, parent_row, parent_parent_row, self.all_vul)
         elif parent_parent_parent_parent_row == -1:
             print('4')
-            item = self.fourthLvlTreeGroup(row, parent_row, parent_parent_row, parent_parent_parent_row, self.all_vul)
+            item = function.fourthLvlTreeGroup(row, parent_row, parent_parent_row, parent_parent_parent_row, self.all_vul)
         else:
             self.errorMessange('Какая-то ошибка с treeView!')
 
         text = ''
         for key in item:
-            text += str(key) + '\n' + '\t' + str(item[key]) + '\n'
+            if key != 'id':
+                text += str(key) + '\n' + '\t' + str(item[key]) + '\n'
         self.ui.textEdit.setText(text)
-
-    def firstLvlTreeGroup(self, row, all_vul):
-        item = {}
-        item['Краткое описание'] = 'Будут записи о группах. Нужн подумать какую информацию выводить'
-        return item
-
-    def firstLvlTree(self, row, all_vul):
-
-        item = {}
-        item['Краткое описание'] = 'Будут записи о узлах, количеств уязмиостей и их среднее значение'
-
-        check = pd.DataFrame.from_dict(self.all_vul)
-        print(check)
-        print('check')
-        print(check.columns[0])
-        print('check')
-        print(check.index[0])
-        return item
-
-    def secondLvlTreeGroup(self, row, parent_row, all_vul):
-        l = 0
-        item = {}
-        for group in self.all_vul:
-            if l == parent_row:
-                item = self.firstLvlTree(row, all_vul)
-            l += 1
-        return item
-
-    def secondLvlTree(self, row, parent_row, all_vul):
-        item = {}
-        i = 0
-        j = 0
-        for key in all_vul:
-            if i == parent_row:
-                for name in all_vul[key]:
-                    if j == row:
-                        ip_key = key
-                        port_name = name
-                        break
-                    j += 1
-            i += 1
-        item['Количество уязвимостей'] = len(all_vul[ip_key][port_name])
-        print((all_vul[ip_key][port_name]))
-        item['Краткое описание'] = 'Будут записи о уязвимостяй в порте и названия протокола'
-        return item
-
-    def thirdLvlTreeGroup(self, row, parent_row, parent_parent_row, all_vul):
-        l = 0
-        item = {}
-        for group in all_vul:
-            if l == parent_parent_row:
-                item = self.secondLvlTree(row, parent_row, all_vul[group])
-            l += 1
-        return item
-
-    def thirdLvlTree(self, row, parent_row, parent_parent_row, all_vul):
-        i = 0
-        j = 0
-        k = 0
-        item = {}
-        for key in all_vul:
-            if i == parent_parent_row:
-                for name in all_vul[key]:
-                    if j == parent_row:
-                        for vul in all_vul[key][name]:
-                            if k == row:
-                                item = vul
-                                break
-                            k += 1
-                    j += 1
-
-            i += 1
-
-        return item
-
-    def fourthLvlTreeGroup(self, row, parent_row, parent_parent_row, parent_parent_parent_row, all_vul):
-        l = 0
-        item = {}
-        for group in all_vul:
-            print(group)
-            if l == parent_parent_parent_row:
-                item = self.thirdLvlTree(row, parent_row, parent_parent_row, all_vul[group])
-            l += 1
-        return item
 
     def openDialogGroupVal(self):
         dialog = ClssDialog(self)
@@ -383,15 +297,6 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.cancelTextEdit.setHidden(False)
         self.ui.editTextEdit.setHidden(True)
 
-    def cancelEditText(self):
-        print(self.ui.treeViewVul.currentIndex().row())
-        if self.textEdit != '':
-            self.ui.textEdit.setText(self.textEdit)
-        self.ui.saveTextEdit.setHidden(True)
-        self.ui.cancelTextEdit.setHidden(True)
-        self.ui.editTextEdit.setHidden(False)
-        self.ui.textEdit.setReadOnly(True)
-
     def saveEditText(self):
         parent_parent_parent_parent_row = self.ui.treeViewVul.currentIndex().parent().parent().parent().parent().row()
         parent_parent_parent_row = self.ui.treeViewVul.currentIndex().parent().parent().parent().row()
@@ -404,20 +309,22 @@ class MyWin(QtWidgets.QMainWindow):
 
         vul = []
         num_1 = num_2 = 0
-        print('check')
         while num_1 != -1 and num_2 != -1: # На одну больше чем есть!
             num_1 = text.find('<<<<<<<<')
             num_2 = text.find('>>>>>>>>')
-            name = text[num_1 + 10: num_2]
-            text = text[num_2 + 11:]
-            print(name)
-            vul.append(name)
+            key = text[:num_1]
+            key = key.replace('\t', '')
+            key = key.replace('\n', '')
+            # print(key)
+            value = text[num_1 + 10: num_2]
+            value = value.replace('\t', '')
+            value = value.replace('\n', '')
+            # print(value)
+            if value != '':
+                vul.append(value)
 
-        try:
-            self.conn = sqlite3.connect('db.sqlite3')
-            print("Connection to SQLite DB successful")
-        except Error as e:
-            print(f"The error '{e}' occurred")
+            text = text[num_2 + 10:]
+
 
         cur = self.conn.cursor()
         item = {}
@@ -432,10 +339,10 @@ class MyWin(QtWidgets.QMainWindow):
                 i += 1
             try:
                 check_first_lvl_is_group = ipaddress.ip_address(check_first_lvl_is_group)
-                item = self.firstLvlTree(row, self.all_vul)
+                item = function.firstLvlTree(row, self.all_vul)
                 #Тут писать то что изменили, ввод в БД данные
             except:
-                item = self.firstLvlTreeGroup(row, self.all_vul)
+                item = function.firstLvlTreeGroup(row, self.all_vul)
                 #Тут писать то что изменили, ввод в БД данные
         elif parent_parent_row == -1:
             print('2')
@@ -448,10 +355,10 @@ class MyWin(QtWidgets.QMainWindow):
                 i += 1
             try:
                 check_first_lvl_is_group = ipaddress.ip_address(check_first_lvl_is_group)
-                item = self.secondLvlTree(row, parent_row, self.all_vul)
+                item = function.secondLvlTree(row, parent_row, self.all_vul)
                 #Тут писать то что изменили, ввод в БД данные
             except:
-                item = self.secondLvlTreeGroup(row, parent_row, self.all_vul)
+                item = function.secondLvlTreeGroup(row, parent_row, self.all_vul)
                 #Тут писать то что изменили, ввод в БД данные
         elif parent_parent_parent_row == -1:
             print('3')
@@ -464,27 +371,42 @@ class MyWin(QtWidgets.QMainWindow):
                 i += 1
             try:
                 check_first_lvl_is_group = ipaddress.ip_address(check_first_lvl_is_group)
-                item = self.thirdLvlTree(row, parent_row, parent_parent_row, self.all_vul)
-                #Тут писать то что изменили, ввод в БД данные
-
-                print('checl' + str(vul[0]))
-                # cur.execute(
-                #     '''CREATE TABLE tasks (taskid INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, notes TEXT, taskcust INTEGER, FOREIGN KEY(taskcust) REFERENCES customer(custid))''')
-                cur.execute('Update report_vulnerability set "name" = '+str(vul[0])+' where "name" = '+str(vul[0])+';')
-                cur.commit()
-
+                item = function.thirdLvlTree(row, parent_row, parent_parent_row, self.all_vul)
+                if len(item) != len(vul) + 1:
+                    self.errorMessange('Не совпадает количество данных! Должно быть 6')
+                    self.cancelEditText(True)
+                    return 0
+                function.updateVulSavebtn(item, vul, self.conn)
             except:
-                item = self.thirdLvlTreeGroup(row, parent_row, parent_parent_row, self.all_vul)
+                item = function.thirdLvlTreeGroup(row, parent_row, parent_parent_row, self.all_vul)
                 #Тут писать то что изменили, ввод в БД данные
         elif parent_parent_parent_parent_row == -1:
             print('4')
-            item = self.fourthLvlTreeGroup(row, parent_row, parent_parent_row, parent_parent_parent_row, self.all_vul)
-                #Тут писать то что изменили, ввод в БД данные
+            item = function.fourthLvlTreeGroup(row, parent_row, parent_parent_row, parent_parent_parent_row, self.all_vul)
+            if len(item) != len(vul) + 1:
+                self.errorMessange('Не совпадает количество данных! Должно быть 6')
+                self.cancelEditText(True)
+                return 0
+            function.updateVulSavebtn(item, vul, self.conn)
         else:
             self.errorMessange('Какая-то ошибка с treeView!')
 
 
-        self.cancelEditText()
+        text = ''
+        for key in item:
+            if key != 'id':
+                text += str(key) + '\n' + '\t' + str(item[key]) + '\n'
+        self.ui.textEdit.setText(text)
+        self.cancelEditText(False)
+
+    def cancelEditText(self, check):
+
+        if self.textEdit != '' and check:
+            self.ui.textEdit.setText(self.textEdit)
+        self.ui.saveTextEdit.setHidden(True)
+        self.ui.cancelTextEdit.setHidden(True)
+        self.ui.editTextEdit.setHidden(False)
+        self.ui.textEdit.setReadOnly(True)
 
     def errorMessange(self, text):
         error = QtWidgets.QMessageBox()

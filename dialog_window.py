@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'D:\Dis\dialog_window.ui'
+# Form implementation generated from reading ui file 'C:\py\Dis\dialog_window.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -66,7 +66,7 @@ class Ui_DialogGroup(object):
         self.comboBox.setItemText(1, _translate("DialogGroup", "IP/маска сети"))
         self.comboBox.setItemText(2, _translate("DialogGroup", "Выбрать узлы"))
         self.lineEditStartIP.setText(_translate("DialogGroup", "0.0.0.0"))
-        self.lineEditEndIP.setText(_translate("DialogGroup", "192.168.88.240"))
+        self.lineEditEndIP.setText(_translate("DialogGroup", "0.0.0.0"))
 
 
 if __name__ == "__main__":
