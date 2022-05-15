@@ -8,30 +8,30 @@ def updateVulSavebtn(item, vul, conn):
     for key in item:
         if i < 3:
             cur.execute(
-                'Update report_vulnerability set "' + str(key) + '" = "' + str(vul[i]) + '" where "id" = "' + str(
+                'Update report_vulnerability set "' + str(key) + '" = "' + str(vul[key]) + '" where "id" = "' + str(
                     item['id']) + '";')
         elif i < 5:
             cur.execute(
-                'Update report_cvss2 set "base_score" = "' + str(vul[i]) + '" where "base_score" = "' + str(
-                    item['cvss2_id']) + '";')
+                'Update report_cvss2 set "base_score" = "' + str(vul[key]) + '" where "base_score" = "' + str(
+                    item['cvss2']) + '";')
         elif i < 6:
             cur.execute(
-                'Update report_cvss3 set "base_score" = "' + str(vul[i]) + '" where "base_score" = "' + str(
-                    item['cvss3_id']) + '";')
+                'Update report_cvss3 set "base_score" = "' + str(vul[key]) + '" where "base_score" = "' + str(
+                    item['cvss3']) + '";')
         else:
             break
         conn.commit()
-        item[key] = str(vul[i])
+        item[key] = (vul[key])
         i += 1
 
 
-def firstLvlTreeGroup(self, row, all_vul):
+def firstLvlTreeGroup(row, all_vul):
     item = {}
     item['Краткое описание'] = 'Будут записи о группах. Нужн подумать какую информацию выводить'
     return item
 
 
-def firstLvlTree(self, row, all_vul):
+def firstLvlTree(row, all_vul):
     item = {}
     item['Краткое описание'] = 'Будут записи о узлах, количеств уязмиостей и их среднее значение'
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>888</width>
-    <height>470</height>
+    <width>1054</width>
+    <height>591</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -59,8 +59,8 @@
             <property name="geometry">
              <rect>
               <x>0</x>
-              <y>0</y>
-              <width>579</width>
+              <y>-12</y>
+              <width>697</width>
               <height>1023</height>
              </rect>
             </property>
@@ -633,85 +633,6 @@
       <attribute name="title">
        <string>Правила МЭ</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_14">
-       <item>
-        <widget class="QScrollArea" name="scrollArea_3">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-         <property name="widgetResizable">
-          <bool>true</bool>
-         </property>
-         <widget class="QWidget" name="scrollAreaWidgetContents_3">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>844</width>
-            <height>365</height>
-           </rect>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_15">
-           <item>
-            <widget class="QListView" name="listView"/>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_26">
-             <item>
-              <spacer name="horizontalSpacer_42">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
-              <widget class="QPushButton" name="addRuleFirewall">
-               <property name="text">
-                <string>Добавить</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="editRuleFirewall">
-               <property name="text">
-                <string>Редактировать</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="makeFirewall">
-               <property name="text">
-                <string>Применить</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="saveFirewall">
-               <property name="text">
-                <string>Сохранить</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="cancelFirewall">
-               <property name="text">
-                <string>Отмена</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </widget>
-        </widget>
-       </item>
-      </layout>
      </widget>
      <widget class="QWidget" name="tab_3">
       <attribute name="title">
@@ -733,31 +654,18 @@
              <property name="geometry">
               <rect>
                <x>0</x>
-               <y>0</y>
-               <width>809</width>
-               <height>957</height>
+               <y>-17</y>
+               <width>975</width>
+               <height>938</height>
               </rect>
              </property>
-             <layout class="QVBoxLayout" name="verticalLayout_5" stretch="1,0,0,0,0">
+             <layout class="QVBoxLayout" name="verticalLayout_5" stretch="1,0,0,0">
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0,0,0">
+               <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0,0">
                 <item>
                  <widget class="QPushButton" name="chooseVulnaribilityBtn">
-                  <property name="styleSheet">
-                   <string notr="true">background-color: rgb(220, 220, 220);</string>
-                  </property>
                   <property name="text">
                    <string>Выбрать уязвимость</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="calcVulnaribilityBtn">
-                  <property name="enabled">
-                   <bool>false</bool>
-                  </property>
-                  <property name="text">
-                   <string>Посчитать</string>
                   </property>
                  </widget>
                 </item>
@@ -785,13 +693,6 @@
                  </widget>
                 </item>
                </layout>
-              </item>
-              <item>
-               <widget class="QLabel" name="labelOutputVulInf">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
               </item>
               <item>
                <widget class="QWidget" name="widget_2" native="true">
@@ -868,15 +769,12 @@
                       <number>0</number>
                      </property>
                      <item>
-                      <widget class="QPushButton" name="baseAvNetworkBtn">
+                      <widget class="QPushButton" name="baseAvBtn_1">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Сеть (N)</string>
@@ -884,7 +782,7 @@
                       </widget>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="baseAvAdjacentBtn">
+                      <widget class="QPushButton" name="baseAvBtn_2">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -897,7 +795,7 @@
                       </widget>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="baseAvLocalBtn">
+                      <widget class="QPushButton" name="baseAvBtn_3">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -910,7 +808,7 @@
                       </widget>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="baseAvPhysicalBtn">
+                      <widget class="QPushButton" name="baseAvBtn_4">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -949,9 +847,6 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Без изменений (U)</string>
@@ -1014,15 +909,12 @@
                       <number>0</number>
                      </property>
                      <item>
-                      <widget class="QPushButton" name="baseAcLowBtn">
+                      <widget class="QPushButton" name="baseAcBtn_1">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Низкий(L)</string>
@@ -1030,7 +922,7 @@
                       </widget>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="baseAcHighBtn">
+                      <widget class="QPushButton" name="baseAcBtn_2">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -1069,9 +961,6 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Нет (N)</string>
@@ -1147,15 +1036,12 @@
                       <number>0</number>
                      </property>
                      <item>
-                      <widget class="QPushButton" name="baseRpNoneBtn">
+                      <widget class="QPushButton" name="baseRpBtn_1">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Нет (N)</string>
@@ -1163,7 +1049,7 @@
                       </widget>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="baseRpLowBtn">
+                      <widget class="QPushButton" name="baseRpBtn_2">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -1176,7 +1062,7 @@
                       </widget>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="baseRpHighBtn">
+                      <widget class="QPushButton" name="baseRpBtn_3">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -1215,9 +1101,6 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Нет (N)</string>
@@ -1300,9 +1183,6 @@
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
-                       </property>
                        <property name="text">
                         <string>Нет (N)</string>
                        </property>
@@ -1348,9 +1228,6 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Нет (N)</string>
@@ -1491,9 +1368,6 @@
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
-                       </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
                        </property>
@@ -1594,9 +1468,6 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
@@ -1704,9 +1575,6 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
@@ -1857,9 +1725,6 @@
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
-                       </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
                        </property>
@@ -1931,9 +1796,6 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Не определенно (X)</string>
@@ -2037,9 +1899,6 @@
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
-                       </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
                        </property>
@@ -2111,9 +1970,6 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Не определенно (X)</string>
@@ -2197,9 +2053,6 @@
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
-                       </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
                        </property>
@@ -2271,9 +2124,6 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Не определенно (X)</string>
@@ -2369,9 +2219,6 @@
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
-                       </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
                        </property>
@@ -2430,9 +2277,6 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Не определенно (X)</string>
@@ -2518,9 +2362,6 @@
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
-                       </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
                        </property>
@@ -2592,9 +2433,6 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Не определенно (X)</string>
@@ -2683,9 +2521,6 @@
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
-                       </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
                        </property>
@@ -2724,9 +2559,6 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Высокий (Н) </string>

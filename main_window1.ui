@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>888</width>
-    <height>470</height>
+    <width>1037</width>
+    <height>729</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_13">
+  <layout class="QVBoxLayout" name="verticalLayout_2">
    <property name="topMargin">
     <number>50</number>
    </property>
@@ -48,523 +48,10 @@
           <widget class="QTreeView" name="treeViewVul"/>
          </item>
          <item>
-          <widget class="QScrollArea" name="scrollArea_2">
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(255, 255, 255);</string>
-           </property>
-           <property name="widgetResizable">
+          <widget class="QTextEdit" name="textEdit">
+           <property name="readOnly">
             <bool>true</bool>
            </property>
-           <widget class="QWidget" name="scrollAreaWidgetContents_2">
-            <property name="geometry">
-             <rect>
-              <x>0</x>
-              <y>0</y>
-              <width>579</width>
-              <height>1023</height>
-             </rect>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_9">
-             <item>
-              <widget class="QWidget" name="widgetVulnerability" native="true">
-               <layout class="QVBoxLayout" name="verticalLayout_10" stretch="2,2,2,2,2,2,4,2,2,2,2,2">
-                <property name="sizeConstraint">
-                 <enum>QLayout::SetDefaultConstraint</enum>
-                </property>
-                <item>
-                 <widget class="QLabel" name="labelVul1">
-                  <property name="text">
-                   <string>Название уязвимости:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="lineNameVulEdit">
-                  <property name="enabled">
-                   <bool>true</bool>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="labelVul2">
-                  <property name="text">
-                   <string>Короткое описание:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QTextEdit" name="textShortDescriptionEdit">
-                  <property name="enabled">
-                   <bool>true</bool>
-                  </property>
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="labelVul3">
-                  <property name="text">
-                   <string>Описание:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QTextEdit" name="textDescriptionEdit">
-                  <property name="enabled">
-                   <bool>true</bool>
-                  </property>
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="labelVul4">
-                  <property name="text">
-                   <string>Решение:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QTextEdit" name="textSolutionEdit">
-                  <property name="enabled">
-                   <bool>true</bool>
-                  </property>
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="labelVul5">
-                  <property name="text">
-                   <string>CVSS2</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="lineCVSS2Edit">
-                  <property name="enabled">
-                   <bool>true</bool>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="labelVul6">
-                  <property name="text">
-                   <string>CVSS3</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="lineCVSS3Edit">
-                  <property name="enabled">
-                   <bool>true</bool>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item>
-              <widget class="QWidget" name="widgetPort" native="true">
-               <layout class="QVBoxLayout" name="verticalLayout_11">
-                <item>
-                 <widget class="QLabel" name="labelVul1_2">
-                  <property name="text">
-                   <string>Количество уязвимостей:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_17" stretch="1,11">
-                  <item>
-                   <spacer name="horizontalSpacer_10">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="label2lvlVulnaribility">
-                    <property name="text">
-                     <string>TextLabel</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <widget class="QLabel" name="labelVul2_2">
-                  <property name="text">
-                   <string>Короткое описание:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_19" stretch="1,11">
-                  <item>
-                   <spacer name="horizontalSpacer_11">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>58</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="label2lvlShortDescription">
-                    <property name="text">
-                     <string>TextLabel</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_18">
-                  <item>
-                   <widget class="QPushButton" name="lvl2Btn">
-                    <property name="text">
-                     <string>Выбрать уязвимости</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_12">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>88</width>
-                      <height>17</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                 </layout>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item>
-              <widget class="QWidget" name="widgetNode" native="true">
-               <layout class="QVBoxLayout" name="verticalLayout_12">
-                <item>
-                 <widget class="QLabel" name="labelVul1_3">
-                  <property name="text">
-                   <string>Количество уязвимостей:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_21" stretch="1,11">
-                  <item>
-                   <spacer name="horizontalSpacer_14">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="label1lvlVulnaribility">
-                    <property name="text">
-                     <string>TextLabel</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_8">
-                  <property name="text">
-                   <string>Количнство портов:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_23" stretch="1,11">
-                  <item>
-                   <spacer name="horizontalSpacer_18">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>58</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="label1lvlPort">
-                    <property name="text">
-                     <string>TextLabel</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <widget class="QLabel" name="labelVul2_3">
-                  <property name="text">
-                   <string>Короткое описание:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_22" stretch="1,11">
-                  <item>
-                   <spacer name="horizontalSpacer_15">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>58</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="label1lvlShortDescription">
-                    <property name="text">
-                     <string>TextLabel</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_20">
-                  <item>
-                   <widget class="QPushButton" name="lvl1Btn">
-                    <property name="text">
-                     <string>Выбрать уязвимости</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_13">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>88</width>
-                      <height>17</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                 </layout>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item>
-              <widget class="QWidget" name="widgetGroup" native="true">
-               <layout class="QVBoxLayout" name="verticalLayout_2">
-                <item>
-                 <widget class="QLabel" name="labelVul1_4">
-                  <property name="text">
-                   <string>Количество уязвимостей:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_25" stretch="1,11">
-                  <item>
-                   <spacer name="horizontalSpacer_33">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="label11lvlVulnaribility">
-                    <property name="text">
-                     <string>TextLabel</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_10">
-                  <property name="text">
-                   <string>Количество узлов:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_33" stretch="1,11">
-                  <item>
-                   <spacer name="horizontalSpacer_39">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>58</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="label11lvlNode">
-                    <property name="text">
-                     <string>TextLabel</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_9">
-                  <property name="text">
-                   <string>Количнство портов:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_27" stretch="1,11">
-                  <item>
-                   <spacer name="horizontalSpacer_36">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>58</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="label11lvlPort">
-                    <property name="text">
-                     <string>TextLabel</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <widget class="QLabel" name="labelVul2_4">
-                  <property name="text">
-                   <string>Короткое описание:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_24" stretch="1,11">
-                  <item>
-                   <spacer name="horizontalSpacer_19">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>58</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="label11lvlShortDescription">
-                    <property name="text">
-                     <string>TextLabel</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_28">
-                  <item>
-                   <widget class="QPushButton" name="lvl11Btn">
-                    <property name="text">
-                     <string>Выбрать уязвимости</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_34">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>88</width>
-                      <height>17</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                 </layout>
-                </item>
-               </layout>
-              </widget>
-             </item>
-            </layout>
-           </widget>
           </widget>
          </item>
         </layout>
@@ -633,85 +120,6 @@
       <attribute name="title">
        <string>Правила МЭ</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_14">
-       <item>
-        <widget class="QScrollArea" name="scrollArea_3">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-         <property name="widgetResizable">
-          <bool>true</bool>
-         </property>
-         <widget class="QWidget" name="scrollAreaWidgetContents_3">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>844</width>
-            <height>365</height>
-           </rect>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_15">
-           <item>
-            <widget class="QListView" name="listView"/>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_26">
-             <item>
-              <spacer name="horizontalSpacer_42">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
-              <widget class="QPushButton" name="addRuleFirewall">
-               <property name="text">
-                <string>Добавить</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="editRuleFirewall">
-               <property name="text">
-                <string>Редактировать</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="makeFirewall">
-               <property name="text">
-                <string>Применить</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="saveFirewall">
-               <property name="text">
-                <string>Сохранить</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="cancelFirewall">
-               <property name="text">
-                <string>Отмена</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </widget>
-        </widget>
-       </item>
-      </layout>
      </widget>
      <widget class="QWidget" name="tab_3">
       <attribute name="title">
@@ -734,30 +142,17 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>809</width>
-               <height>957</height>
+               <width>958</width>
+               <height>938</height>
               </rect>
              </property>
-             <layout class="QVBoxLayout" name="verticalLayout_5" stretch="1,0,0,0,0">
+             <layout class="QVBoxLayout" name="verticalLayout_5" stretch="1,0,0,0">
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0,0,0">
+               <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0,0">
                 <item>
                  <widget class="QPushButton" name="chooseVulnaribilityBtn">
-                  <property name="styleSheet">
-                   <string notr="true">background-color: rgb(220, 220, 220);</string>
-                  </property>
                   <property name="text">
                    <string>Выбрать уязвимость</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="calcVulnaribilityBtn">
-                  <property name="enabled">
-                   <bool>false</bool>
-                  </property>
-                  <property name="text">
-                   <string>Посчитать</string>
                   </property>
                  </widget>
                 </item>
@@ -785,13 +180,6 @@
                  </widget>
                 </item>
                </layout>
-              </item>
-              <item>
-               <widget class="QLabel" name="labelOutputVulInf">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
               </item>
               <item>
                <widget class="QWidget" name="widget_2" native="true">
@@ -875,9 +263,6 @@
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
-                       </property>
                        <property name="text">
                         <string>Сеть (N)</string>
                        </property>
@@ -950,9 +335,6 @@
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
-                       </property>
                        <property name="text">
                         <string>Без изменений (U)</string>
                        </property>
@@ -1021,9 +403,6 @@
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
-                       </property>
                        <property name="text">
                         <string>Низкий(L)</string>
                        </property>
@@ -1069,9 +448,6 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Нет (N)</string>
@@ -1154,9 +530,6 @@
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
-                       </property>
                        <property name="text">
                         <string>Нет (N)</string>
                        </property>
@@ -1215,9 +588,6 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Нет (N)</string>
@@ -1300,9 +670,6 @@
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
-                       </property>
                        <property name="text">
                         <string>Нет (N)</string>
                        </property>
@@ -1348,9 +715,6 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Нет (N)</string>
@@ -1491,9 +855,6 @@
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
-                       </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
                        </property>
@@ -1594,9 +955,6 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
@@ -1704,9 +1062,6 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
@@ -1857,9 +1212,6 @@
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
-                       </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
                        </property>
@@ -1931,9 +1283,6 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Не определенно (X)</string>
@@ -2037,9 +1386,6 @@
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
-                       </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
                        </property>
@@ -2111,9 +1457,6 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Не определенно (X)</string>
@@ -2197,9 +1540,6 @@
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
-                       </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
                        </property>
@@ -2271,9 +1611,6 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Не определенно (X)</string>
@@ -2369,9 +1706,6 @@
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
-                       </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
                        </property>
@@ -2430,9 +1764,6 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Не определенно (X)</string>
@@ -2518,9 +1849,6 @@
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
-                       </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
                        </property>
@@ -2592,9 +1920,6 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Не определенно (X)</string>
@@ -2683,9 +2008,6 @@
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
-                       </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
                        </property>
@@ -2724,9 +2046,6 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Высокий (Н) </string>
