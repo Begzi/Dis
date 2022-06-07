@@ -1,0 +1,1 @@
+pyuic5.exe -x C:\py\Dis\dialog_window_OP_add.ui -o C:\py\Dis\dialog_window_OP_add.py

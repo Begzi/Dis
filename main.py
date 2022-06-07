@@ -1,11 +1,10 @@
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 import main_window
-import dialog_window
+import dialog_window_IP
 import dialog_window_vulnar
 import ipaddress
 import function
-import choose_btn
 import sqlite3
 from sqlite3 import Error
 
@@ -14,7 +13,7 @@ class ClssDialogGroup(QtWidgets.QDialog):
     def __init__(self, parent=None):
         super(ClssDialogGroup, self).__init__(parent)
 
-        self.di = dialog_window.Ui_DialogGroup()
+        self.di = dialog_window_IP.Ui_DialogGroup()
         self.di.setupUi(self)
 
         self.di.comboBox.view().pressed.connect(self.inputEndIp)

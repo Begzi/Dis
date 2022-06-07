@@ -6,24 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>888</width>
-    <height>470</height>
+    <width>1000</width>
+    <height>613</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_13">
-   <property name="topMargin">
-    <number>50</number>
-   </property>
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="styleSheet">
       <string notr="true"/>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="val">
       <attribute name="title">
@@ -60,7 +57,7 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>579</width>
+              <width>659</width>
               <height>1023</height>
              </rect>
             </property>
@@ -635,30 +632,25 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_14">
        <item>
-        <widget class="QScrollArea" name="scrollArea_3">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
+        <widget class="QTabWidget" name="firewallWidget">
+         <property name="currentIndex">
+          <number>0</number>
          </property>
-         <property name="widgetResizable">
-          <bool>true</bool>
-         </property>
-         <widget class="QWidget" name="scrollAreaWidgetContents_3">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>844</width>
-            <height>365</height>
-           </rect>
+         <widget class="QWidget" name="localFirewall">
+          <property name="accessibleName">
+           <string>Лоакльные правила </string>
           </property>
+          <attribute name="title">
+           <string>Локальные правила</string>
+          </attribute>
           <layout class="QVBoxLayout" name="verticalLayout_15">
            <item>
-            <widget class="QListView" name="listView"/>
+            <widget class="QListView" name="listViewLocalRule"/>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_26">
+            <layout class="QHBoxLayout" name="horizontalLayout_34">
              <item>
-              <spacer name="horizontalSpacer_42">
+              <spacer name="horizontalSpacer_44">
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
                </property>
@@ -671,35 +663,159 @@
               </spacer>
              </item>
              <item>
-              <widget class="QPushButton" name="addRuleFirewall">
+              <widget class="QPushButton" name="addLocalRule">
                <property name="text">
                 <string>Добавить</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="editRuleFirewall">
+              <widget class="QPushButton" name="editLocalRule">
                <property name="text">
                 <string>Редактировать</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="makeFirewall">
+              <widget class="QPushButton" name="makeLocalRule">
                <property name="text">
                 <string>Применить</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="saveFirewall">
+              <widget class="QPushButton" name="saveLocalRule">
                <property name="text">
                 <string>Сохранить</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="cancelFirewall">
+              <widget class="QPushButton" name="cancelLocalRule">
+               <property name="text">
+                <string>Отмена</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="firewallRule">
+          <attribute name="title">
+           <string>Транзитные правила</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="verticalLayout_16">
+           <item>
+            <widget class="QListView" name="listViewForwardRule"/>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_36">
+             <item>
+              <spacer name="horizontalSpacer_46">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QPushButton" name="addForwardRule">
+               <property name="text">
+                <string>Добавить</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="editForwardRule">
+               <property name="text">
+                <string>Редактировать</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="makeForwardRule">
+               <property name="text">
+                <string>Применить</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="saveForwardRule">
+               <property name="text">
+                <string>Сохранить</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="cancelForwardRule">
+               <property name="text">
+                <string>Отмена</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="userPO">
+          <attribute name="title">
+           <string>Использование портов ПО*</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="verticalLayout_17">
+           <item>
+            <widget class="QListView" name="listViewUserPO"/>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_37">
+             <item>
+              <spacer name="horizontalSpacer_47">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QPushButton" name="addUserPO">
+               <property name="text">
+                <string>Добавить</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="editUserPO">
+               <property name="text">
+                <string>Редактировать</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="makeUserPO">
+               <property name="text">
+                <string>Применить</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="saveUserPO">
+               <property name="text">
+                <string>Сохранить</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="cancelUserPO">
                <property name="text">
                 <string>Отмена</string>
                </property>
@@ -734,7 +850,7 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>809</width>
+               <width>921</width>
                <height>957</height>
               </rect>
              </property>
