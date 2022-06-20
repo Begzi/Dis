@@ -1,5 +1,6 @@
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
+sys.path.insert(0, "C:\py\Dis\GUI")
 import main_window
 import dialog_window_IP
 import dialog_window_vulnar
