@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\py\Dis\dialog_window_filter_IP.ui'
+# Form implementation generated from reading ui file 'C:\py\Dis\GUI\dialog_window_filter_IP.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -52,9 +52,11 @@ class Ui_Dialog(object):
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
         self.lineEdit_2 = QtWidgets.QLineEdit(Dialog)
+        self.lineEdit_2.setEnabled(False)
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.verticalLayout.addWidget(self.lineEdit_2)
         self.lineEdit_3 = QtWidgets.QLineEdit(Dialog)
+        self.lineEdit_3.setEnabled(False)
         self.lineEdit_3.setObjectName("lineEdit_3")
         self.verticalLayout.addWidget(self.lineEdit_3)
         self.horizontalLayout_2.addLayout(self.verticalLayout)
@@ -75,9 +77,11 @@ class Ui_Dialog(object):
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.lineEdit_4 = QtWidgets.QLineEdit(Dialog)
+        self.lineEdit_4.setEnabled(False)
         self.lineEdit_4.setObjectName("lineEdit_4")
         self.verticalLayout_2.addWidget(self.lineEdit_4)
         self.lineEdit_5 = QtWidgets.QLineEdit(Dialog)
+        self.lineEdit_5.setEnabled(False)
         self.lineEdit_5.setObjectName("lineEdit_5")
         self.verticalLayout_2.addWidget(self.lineEdit_5)
         self.horizontalLayout_3.addLayout(self.verticalLayout_2)

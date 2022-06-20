@@ -1,82 +1,19 @@
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 sys.path.insert(0, "C:\py\Dis\GUI")
+sys.path.insert(0, "C:\py\Dis\Dialog")
+import dialog_group
 import main_window
-import dialog_window_IP
-import dialog_window_vulnar
+import dialog_choose_vul
+import dialog_filter
 import ipaddress
 import function
 import sqlite3
 from sqlite3 import Error
 
 
-class ClssDialogGroup(QtWidgets.QDialog):
-    def __init__(self, parent=None):
-        super(ClssDialogGroup, self).__init__(parent)
-
-        self.di = dialog_window_IP.Ui_DialogGroup()
-        self.di.setupUi(self)
-
-        self.di.comboBox.view().pressed.connect(self.inputEndIp)
-
-    def inputEndIp(self, index):
-        if index.row() != 0:
-            self.di.lineEditEndIP.setEnabled(False)
-            self.di.lineEditStartIP.setText('0.0.0.0/0')
-        else:
-            self.di.lineEditEndIP.setEnabled(True)
-            self.di.lineEditStartIP.setText('0.0.0.0')
-
-    def btnClosed(self):
-
-        self.accept()
 
 
-class ClssDialogChooseVul(QtWidgets.QDialog):
-    def __init__(self, parent=None):
-        super(ClssDialogChooseVul, self).__init__(parent)
-
-        self.di_2 = dialog_window_vulnar.Ui_dialogChooseVulnaribility()
-        self.di_2.setupUi(self)
-        self.cvss_list = []
-        self.cvss_current = 0
-
-        try:
-            self.conn = sqlite3.connect('db.sqlite3')
-            print("Connection to SQLite DB successful")
-        except Error as e:
-            print(f"The error '{e}' occurred")
-
-        cur = self.conn.cursor()
-        cur.execute('SELECT * FROM report_vulnerability;')
-        all_results = cur.fetchall()  # Картежи!
-        model = QtGui.QStandardItemModel()
-        self.di_2.listView.setModel(model)
-
-        for value in all_results:
-            if (value[6] != 0 and value[6] != 'null') or (value[5] != 0 and value[5] != 'null'):
-                vul_name = str( value[1])
-                vul_id = str( value[0])
-                if value[6] != 0 or value[6] != 'null':
-                    cur.execute('SELECT * FROM report_cvss3 where "id" = ' + str(value[6]) + ' ;')
-                    cvss = cur.fetchone()  # Картежи!
-                else:
-                    cur.execute('SELECT * FROM report_cvss2 where "id" = ' + str(value[5]) + ' ;')
-                    cvss = cur.fetchone()  # Картежи!
-                self.cvss_list.append(cvss)
-                stroka = vul_id  +')' +vul_name + str(cvss[1])
-                qitem = QtGui.QStandardItem(stroka)
-                model.appendRow(qitem)
-        self.di_2.listView.clicked.connect(self.listChoosen)
-
-    def listChoosen(self, index):
-        self.cvss_current = self.cvss_list[index.row()]
-        print(self.cvss_current)
-
-
-    def btnClosed(self):
-
-        self.accept()
 
 
 class MyWin(QtWidgets.QMainWindow):
@@ -84,7 +21,7 @@ class MyWin(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.ui = main_window.Ui_FormMain()  # Экземпляр класса Ui_MainWindow, в нем конструктор всего GUI.
+        self.ui = main_window.Ui_BonsVul()  # Экземпляр класса Ui_MainWindow, в нем конструктор всего GUI.
         self.ui.setupUi(self)  # Инициализация GUI
         self.dialog = 0
         self.all_vul = {}
@@ -98,12 +35,31 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.widgetGroup.setHidden(True)
 
 
-        self.ui.openVul.clicked.connect(self.openDialogOpenVul)
-        self.ui.groupVal.clicked.connect(self.openDialogGroupVal)  # Открыть новую форму
-        self.ui.editTextEdit.clicked.connect(self.editText)  # Открыть новую форму
-        self.ui.saveTextEdit.clicked.connect(self.saveEditText)  # Открыть новую форму
-        self.ui.cancelTextEdit.clicked.connect( self.cancelEditText)  # Открыть новую форму
-        self.ui.chooseVulnaribilityBtn.clicked.connect(self.chooseVulnaribilityCVSS)
+        self.ui.openVul.clicked.connect(self.openDialogOpenVul)# это кнопка должна стать анализировать!
+        self.ui.groupVal.clicked.connect(self.openDialogGroup)   # Открыть новое диалогое окно для группировки узлов
+        self.ui.editTextEdit.clicked.connect(self.editText)  # Изменение данных уязвимостей
+        self.ui.saveTextEdit.clicked.connect(self.saveEditText)  # Сохранение данных уязвимостей
+        self.ui.cancelTextEdit.clicked.connect( self.cancelEditText)  # Отмена изменение данных уязвимостей
+        self.ui.chooseVulnaribilityBtn.clicked.connect(self.openDialogChooseVulnaribilityCVSS)# Открыть новое диалговое окно изменение всех уязвимостей
+
+        self.setWindowTitle('BonsVul')
+        self.createMenuBar()
+
+        self.ui.addLocalRule.clicked.connect(self.openDialogAddLocalRule)
+
+    def createMenuBar(self):
+        self.menuBar = QtWidgets.QMenuBar(self)
+        self.setMenuBar(self.menuBar)
+
+        fileMenu = QtWidgets.QMenu('&Файл', self)
+        self.menuBar.addMenu(fileMenu)
+
+        fileMenu.addAction('Открыть', self.openDialogOpenVul)
+        fileMenu.addAction('Сохранить', self.action_save_clicked)
+
+    @QtCore.pyqtSlot() #аннотация обработки нажатия в меню
+    def action_save_clicked(self):
+        self.fname = QtWidgets.QFileDialog.getOpenFileName(self, '', '', ('xml File(*.xml)'))[0]  # выбирать 1ый файл из всей выборки, если даже пользователь выберетм ного файлов /получаю путь до файла
 
     def openDialogOpenVul(self):
         if not self.ui.cancelTextEdit.isHidden():
@@ -290,10 +246,6 @@ class MyWin(QtWidgets.QMainWindow):
                     elif self.ui.lineCVSS3Edit.objectName().lower().find(str(key)) != -1:
                         self.ui.lineCVSS3Edit.setText(item[key])
 
-# DNS - сервер поддерживает рекурсию запросов.При
-# определенных обстоятельствах злоумышленник может
-    # 136 букв = 2 строки 4троки == 70px при стандартном 100букв = 1 строка == 15px
-
     def editText(self):
         if self.ui.widgetVulnerability.isHidden() == False:
             self.ui.lineCVSS3Edit.setReadOnly(False)
@@ -401,6 +353,7 @@ class MyWin(QtWidgets.QMainWindow):
                     elif self.ui.lineCVSS3Edit.objectName().lower().find(str(key)) != -1:
                         self.ui.lineCVSS3Edit.setText(item[key])
         self.cancelEditText()
+
     def cancelEditText(self):
 
         self.ui.saveTextEdit.setHidden(True)
@@ -416,8 +369,17 @@ class MyWin(QtWidgets.QMainWindow):
             self.ui.lineNameVulEdit.setReadOnly(True)
 
 #####################################################Group
-    def openDialogGroupVal(self):
-        dialog = ClssDialogGroup(self)
+    def openDialogGroup(self):
+        model_nodes = self.ui.treeViewVul.model()
+        nodes = []
+        for i in range(0, model_nodes.rowCount()):
+            try:
+                ipaddress.ip_address(model_nodes.item(i).text())
+                nodes.append(model_nodes.item(i).text())
+            except:
+                print(model_nodes.item(i).text())
+        dialog = dialog_group.ClssDialogGroup(self)
+        dialog.setNodes(nodes)
 
         if dialog.exec_() == QtWidgets.QDialog.Accepted:  # Получаем после закрытия диалогового окна
             keys = list(self.all_vul.keys())
@@ -505,14 +467,11 @@ class MyWin(QtWidgets.QMainWindow):
                         model.appendRow(parent)
             except:
                 self.errorMessange('Вы ввели не корректные данные')
-
-
 #####################################################Group
 #####################################################cvss
-    def chooseVulnaribilityCVSS(self):
-        print('yes')
+    def openDialogChooseVulnaribilityCVSS(self):
         self.ui.calcVulnaribilityBtn.setEnabled(True)
-        dialog = ClssDialogChooseVul(self)
+        dialog = dialog_choose_vul.ClssDialogChooseVul(self)
 
         if dialog.exec_() == QtWidgets.QDialog.Accepted:  # Получаем после закрытия диалогового окна
             print(dialog.cvss_current)
@@ -520,6 +479,18 @@ class MyWin(QtWidgets.QMainWindow):
             print(self.ui.horizontalLayout_8.findChildren(self, QtWidgets.QPushButton))
             pass
 #####################################################cvss
+#####################################################filter
+    def openDialogAddLocalRule(self):
+        self.ui.editLocalRule.setEnabled(True)
+        self.ui.saveLocalRule.setEnabled(True)
+        self.ui.cancelLocalRule.setEnabled(True)
+        dialog = dialog_filter.ClssDialogFilter(self)
+
+        if dialog.exec_() == QtWidgets.QDialog.Accepted:  # Получаем после закрытия диалогового окна
+            print(dialog.tmp)
+            pass
+#####################################################filter
+
     def errorMessange(self, text):
         error = QtWidgets.QMessageBox()
         error.setWindowTitle("Ошибка")

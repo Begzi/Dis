@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\py\Dis\dialog_window_filter.ui'
+# Form implementation generated from reading ui file 'C:\py\Dis\GUI\dialog_window_filter.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(567, 403)
+        Dialog.resize(462, 342)
         self.verticalLayout = QtWidgets.QVBoxLayout(Dialog)
         self.verticalLayout.setObjectName("verticalLayout")
         self.genTab = QtWidgets.QTabWidget(Dialog)
@@ -45,13 +45,13 @@ class Ui_Dialog(object):
         self.horizontalLayout.addWidget(self.label_2)
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.radioButtonBlock = QtWidgets.QRadioButton(self.mainTab)
-        self.radioButtonBlock.setChecked(True)
-        self.radioButtonBlock.setObjectName("radioButtonBlock")
-        self.verticalLayout_2.addWidget(self.radioButtonBlock)
-        self.radioButtonAllow = QtWidgets.QRadioButton(self.mainTab)
-        self.radioButtonAllow.setObjectName("radioButtonAllow")
-        self.verticalLayout_2.addWidget(self.radioButtonAllow)
+        self.radioBlock = QtWidgets.QRadioButton(self.mainTab)
+        self.radioBlock.setChecked(True)
+        self.radioBlock.setObjectName("radioBlock")
+        self.verticalLayout_2.addWidget(self.radioBlock)
+        self.radioAllow = QtWidgets.QRadioButton(self.mainTab)
+        self.radioAllow.setObjectName("radioAllow")
+        self.verticalLayout_2.addWidget(self.radioAllow)
         self.horizontalLayout.addLayout(self.verticalLayout_2)
         self.verticalLayout_3.addLayout(self.horizontalLayout)
         self.genTab.addTab(self.mainTab, "")
@@ -128,16 +128,21 @@ class Ui_Dialog(object):
         self.horizontalLayout_6.addLayout(self.verticalLayout_6)
         self.genTab.addTab(self.portTab, "")
         self.verticalLayout.addWidget(self.genTab)
-        self.buttonBox = QtWidgets.QDialogButtonBox(Dialog)
-        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
-        self.buttonBox.setObjectName("buttonBox")
-        self.verticalLayout.addWidget(self.buttonBox)
+        self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_7.addItem(spacerItem3)
+        self.pushAdd = QtWidgets.QPushButton(Dialog)
+        self.pushAdd.setEnabled(False)
+        self.pushAdd.setObjectName("pushAdd")
+        self.horizontalLayout_7.addWidget(self.pushAdd)
+        self.pushCancel = QtWidgets.QPushButton(Dialog)
+        self.pushCancel.setObjectName("pushCancel")
+        self.horizontalLayout_7.addWidget(self.pushCancel)
+        self.verticalLayout.addLayout(self.horizontalLayout_7)
 
         self.retranslateUi(Dialog)
-        self.genTab.setCurrentIndex(3)
-        self.buttonBox.accepted.connect(Dialog.accept)
-        self.buttonBox.rejected.connect(Dialog.reject)
+        self.genTab.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
@@ -146,8 +151,8 @@ class Ui_Dialog(object):
         self.label.setText(_translate("Dialog", "Имя фильтра"))
         self.checkBox.setText(_translate("Dialog", "Фильтр включен"))
         self.label_2.setText(_translate("Dialog", "Действие"))
-        self.radioButtonBlock.setText(_translate("Dialog", "Блокировать"))
-        self.radioButtonAllow.setText(_translate("Dialog", "Разрешить"))
+        self.radioBlock.setText(_translate("Dialog", "Блокировать"))
+        self.radioAllow.setText(_translate("Dialog", "Разрешить"))
         self.genTab.setTabText(self.genTab.indexOf(self.mainTab), _translate("Dialog", "Основные параметры фильтра"))
         self.addSRCRangeIP.setText(_translate("Dialog", "Добавить"))
         self.editSRCRangeIP.setText(_translate("Dialog", "Свойства"))
@@ -161,6 +166,8 @@ class Ui_Dialog(object):
         self.editPort.setText(_translate("Dialog", "Свойства"))
         self.deletePort.setText(_translate("Dialog", "Удалить"))
         self.genTab.setTabText(self.genTab.indexOf(self.portTab), _translate("Dialog", "Протоколы"))
+        self.pushAdd.setText(_translate("Dialog", "Ок"))
+        self.pushCancel.setText(_translate("Dialog", "Отмена"))
 
 
 if __name__ == "__main__":

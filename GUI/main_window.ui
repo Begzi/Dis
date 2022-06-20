@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>FormMain</class>
- <widget class="QWidget" name="FormMain">
+ <class>BonsVul</class>
+ <widget class="QWidget" name="BonsVul">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -23,7 +23,7 @@
       <string notr="true"/>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="val">
       <attribute name="title">
@@ -59,7 +59,7 @@
             <property name="geometry">
              <rect>
               <x>0</x>
-              <y>-360</y>
+              <y>0</y>
               <width>659</width>
               <height>1023</height>
              </rect>
@@ -686,16 +686,6 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="makeLocalRule">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
-               <property name="text">
-                <string>Применить</string>
-               </property>
-              </widget>
-             </item>
-             <item>
               <widget class="QPushButton" name="saveLocalRule">
                <property name="enabled">
                 <bool>false</bool>
@@ -760,16 +750,6 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="makeForwardRule">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
-               <property name="text">
-                <string>Применить</string>
-               </property>
-              </widget>
-             </item>
-             <item>
               <widget class="QPushButton" name="saveForwardRule">
                <property name="enabled">
                 <bool>false</bool>
@@ -830,16 +810,6 @@
                </property>
                <property name="text">
                 <string>Редактировать</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="makeUserPO">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
-               <property name="text">
-                <string>Применить</string>
                </property>
               </widget>
              </item>
