@@ -46,6 +46,7 @@ class MyWin(QtWidgets.QMainWindow):
         self.createMenuBar()
 
         self.ui.addLocalRule.clicked.connect(self.openDialogAddLocalRule)
+        self.ui.addForwardRule.clicked.connect(self.openDialogAddLocalRule)
 
     def createMenuBar(self):
         self.menuBar = QtWidgets.QMenuBar(self)
@@ -60,6 +61,8 @@ class MyWin(QtWidgets.QMainWindow):
     @QtCore.pyqtSlot() #аннотация обработки нажатия в меню
     def action_save_clicked(self):
         self.fname = QtWidgets.QFileDialog.getOpenFileName(self, '', '', ('xml File(*.xml)'))[0]  # выбирать 1ый файл из всей выборки, если даже пользователь выберетм ного файлов /получаю путь до файла
+
+
 
     def openDialogOpenVul(self):
         if not self.ui.cancelTextEdit.isHidden():
@@ -481,7 +484,6 @@ class MyWin(QtWidgets.QMainWindow):
 #####################################################cvss
 #####################################################filter
     def openDialogAddLocalRule(self):
-        self.ui.editLocalRule.setEnabled(True)
         self.ui.saveLocalRule.setEnabled(True)
         self.ui.cancelLocalRule.setEnabled(True)
         dialog = dialog_filter.ClssDialogFilter(self)

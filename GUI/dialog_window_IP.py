@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_DialogGroup(object):
     def setupUi(self, DialogGroup):
         DialogGroup.setObjectName("DialogGroup")
-        DialogGroup.resize(549, 365)
+        DialogGroup.resize(549, 335)
         self.gridLayout = QtWidgets.QGridLayout(DialogGroup)
         self.gridLayout.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
         self.gridLayout.setContentsMargins(-1, 30, 9, -1)
@@ -94,12 +94,13 @@ class Ui_DialogGroup(object):
         self.label.setObjectName("label")
         self.horizontalLayout_2.addWidget(self.label)
         self.lineEditNameGroup = QtWidgets.QLineEdit(DialogGroup)
+        self.lineEditNameGroup.setText("")
         self.lineEditNameGroup.setObjectName("lineEditNameGroup")
         self.horizontalLayout_2.addWidget(self.lineEditNameGroup)
         self.gridLayout.addLayout(self.horizontalLayout_2, 1, 0, 1, 1)
 
         self.retranslateUi(DialogGroup)
-        self.rangeAddWidget.setCurrentIndex(1)
+        self.rangeAddWidget.setCurrentIndex(0)
         self.buttonBox.accepted.connect(DialogGroup.accept)
         self.buttonBox.rejected.connect(DialogGroup.reject)
         QtCore.QMetaObject.connectSlotsByName(DialogGroup)
@@ -118,7 +119,7 @@ class Ui_DialogGroup(object):
         self.label_4.setText(_translate("DialogGroup", "Узлы для добавления в группу"))
         self.rangeAddWidget.setTabText(self.rangeAddWidget.indexOf(self.tab_4), _translate("DialogGroup", "Выбрать узлы"))
         self.label.setText(_translate("DialogGroup", "Название группы:"))
-        self.lineEditNameGroup.setText(_translate("DialogGroup", "DefaultName"))
+        self.lineEditNameGroup.setPlaceholderText(_translate("DialogGroup", "Название по умолчанию"))
 
 
 if __name__ == "__main__":

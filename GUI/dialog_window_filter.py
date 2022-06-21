@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(462, 342)
+        Dialog.resize(471, 298)
         self.verticalLayout = QtWidgets.QVBoxLayout(Dialog)
         self.verticalLayout.setObjectName("verticalLayout")
         self.genTab = QtWidgets.QTabWidget(Dialog)
@@ -133,7 +133,7 @@ class Ui_Dialog(object):
         spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_7.addItem(spacerItem3)
         self.pushAdd = QtWidgets.QPushButton(Dialog)
-        self.pushAdd.setEnabled(False)
+        self.pushAdd.setEnabled(True)
         self.pushAdd.setObjectName("pushAdd")
         self.horizontalLayout_7.addWidget(self.pushAdd)
         self.pushCancel = QtWidgets.QPushButton(Dialog)
@@ -149,6 +149,7 @@ class Ui_Dialog(object):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.label.setText(_translate("Dialog", "Имя фильтра"))
+        self.lineEdit.setPlaceholderText(_translate("Dialog", "Название по умолчанию"))
         self.checkBox.setText(_translate("Dialog", "Фильтр включен"))
         self.label_2.setText(_translate("Dialog", "Действие"))
         self.radioBlock.setText(_translate("Dialog", "Блокировать"))

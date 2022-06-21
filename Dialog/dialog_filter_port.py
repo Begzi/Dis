@@ -15,9 +15,6 @@ class ClssDialogFilterIP(QtWidgets.QDialog):
         self.di.radioMask.clicked.connect(self.chooseMask)
         self.di.radioRange.clicked.connect(self.chooseRange)
 
-
-        self.di.pushCancel.clicked.connect(self.close)
-
     def chooseIP(self):
         self.di.lineEdit.setEnabled(True)
         self.di.lineEdit_2.setEnabled(False)

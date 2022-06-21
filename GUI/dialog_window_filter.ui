@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>462</width>
-    <height>342</height>
+    <width>471</width>
+    <height>298</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -34,7 +34,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit"/>
+          <widget class="QLineEdit" name="lineEdit">
+           <property name="placeholderText">
+            <string>Название по умолчанию</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
@@ -265,7 +269,7 @@
      <item>
       <widget class="QPushButton" name="pushAdd">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="text">
         <string>Ок</string>
