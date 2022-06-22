@@ -27,7 +27,7 @@
      </property>
      <widget class="QWidget" name="val">
       <attribute name="title">
-       <string>Уязвимости</string>
+       <string>Управление уязвимостями</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
@@ -61,10 +61,24 @@
               <x>0</x>
               <y>0</y>
               <width>659</width>
-              <height>1023</height>
+              <height>1153</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_9">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_26">
+               <item>
+                <widget class="QLabel" name="labelVulLVL">
+                 <property name="text">
+                  <string>Уровень опасности:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineVulLVL"/>
+               </item>
+              </layout>
+             </item>
              <item>
               <widget class="QWidget" name="widgetVulnerability" native="true">
                <layout class="QVBoxLayout" name="verticalLayout_10" stretch="2,2,2,2,2,2,4,2,2,2,2,2">
@@ -236,7 +250,7 @@
                  </widget>
                 </item>
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_19" stretch="1,11">
+                 <layout class="QHBoxLayout" name="horizontalLayout_19" stretch="1,0">
                   <item>
                    <spacer name="horizontalSpacer_11">
                     <property name="orientation">
@@ -264,7 +278,7 @@
                   <item>
                    <widget class="QPushButton" name="lvl2Btn">
                     <property name="text">
-                     <string>Выбрать уязвимости</string>
+                     <string>Выбрать уязвимость</string>
                     </property>
                    </widget>
                   </item>
@@ -359,26 +373,9 @@
                  </widget>
                 </item>
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_22" stretch="1,11">
+                 <layout class="QHBoxLayout" name="horizontalLayout_22" stretch="0">
                   <item>
-                   <spacer name="horizontalSpacer_15">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>58</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="label1lvlShortDescription">
-                    <property name="text">
-                     <string>TextLabel</string>
-                    </property>
-                   </widget>
+                   <widget class="QTextEdit" name="textEditNode"/>
                   </item>
                  </layout>
                 </item>
@@ -387,7 +384,7 @@
                   <item>
                    <widget class="QPushButton" name="lvl1Btn">
                     <property name="text">
-                     <string>Выбрать уязвимости</string>
+                     <string>Выбрать уязвимость</string>
                     </property>
                    </widget>
                   </item>
@@ -513,26 +510,9 @@
                  </widget>
                 </item>
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_24" stretch="1,11">
+                 <layout class="QHBoxLayout" name="horizontalLayout_24" stretch="0">
                   <item>
-                   <spacer name="horizontalSpacer_19">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>58</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="label11lvlShortDescription">
-                    <property name="text">
-                     <string>TextLabel</string>
-                    </property>
-                   </widget>
+                   <widget class="QTextEdit" name="textEditGroup"/>
                   </item>
                  </layout>
                 </item>
@@ -541,7 +521,7 @@
                   <item>
                    <widget class="QPushButton" name="lvl11Btn">
                     <property name="text">
-                     <string>Выбрать уязвимости</string>
+                     <string>Выбрать уязвимость</string>
                     </property>
                    </widget>
                   </item>
@@ -634,13 +614,13 @@
      </widget>
      <widget class="QWidget" name="firewall">
       <attribute name="title">
-       <string>Правила МЭ</string>
+       <string>Данные о сети</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_14">
        <item>
         <widget class="QTabWidget" name="firewallWidget">
          <property name="currentIndex">
-          <number>0</number>
+          <number>2</number>
          </property>
          <widget class="QWidget" name="localFirewall">
           <property name="accessibleName">
@@ -702,6 +682,16 @@
                </property>
                <property name="text">
                 <string>Отмена</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="deleteLocalRule">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>Удалить</string>
                </property>
               </widget>
              </item>
@@ -769,6 +759,16 @@
                </property>
               </widget>
              </item>
+             <item>
+              <widget class="QPushButton" name="deleteForwardRule">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>Удалить</string>
+               </property>
+              </widget>
+             </item>
             </layout>
            </item>
           </layout>
@@ -830,6 +830,16 @@
                </property>
                <property name="text">
                 <string>Отмена</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="deleteUserPO">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>Удалить</string>
                </property>
               </widget>
              </item>

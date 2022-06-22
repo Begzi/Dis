@@ -34,6 +34,8 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.widgetNode.setHidden(True)
         self.ui.widgetGroup.setHidden(True)
 
+        self.ui.labelVulLVL.setHidden(True)
+        self.ui.lineVulLVL.setHidden(True)
 
         self.ui.openVul.clicked.connect(self.openDialogOpenVul)# это кнопка должна стать анализировать!
         self.ui.groupVal.clicked.connect(self.openDialogGroup)   # Открыть новое диалогое окно для группировки узлов
@@ -48,6 +50,38 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.addLocalRule.clicked.connect(self.openDialogAddLocalRule)
         self.ui.addForwardRule.clicked.connect(self.openDialogAddLocalRule)
 
+        self.ui.lvl11Btn.clicked.connect(self.chooseGroupVul)
+
+        self.infoAboutNetworkDefault()
+
+    def infoAboutNetworkDefault(self):
+
+        self.ui.editUserPO.setHidden(True)
+        self.ui.saveUserPO.setHidden(True)
+        self.ui.cancelUserPO.setHidden(True)
+        self.ui.deleteUserPO.setHidden(True)
+
+        self.ui.editForwardRule.setHidden(True)
+        self.ui.saveForwardRule.setHidden(True)
+        self.ui.cancelForwardRule.setHidden(True)
+        self.ui.deleteForwardRule.setHidden(True)
+
+        self.ui.editLocalRule.setHidden(True)
+        self.ui.saveLocalRule.setHidden(True)
+        self.ui.cancelLocalRule.setHidden(True)
+        self.ui.deleteLocalRule.setHidden(True)
+
+
+        model_default = QtGui.QStandardItemModel()
+        qitem = QtGui.QStandardItem("Все")
+        model_default.appendRow(qitem)
+        self.ui.listViewLocalRule.setModel(model_default)
+        self.ui.listViewForwardRule.setModel(model_default)
+        self.ui.listViewUserPO.setModel(model_default)
+        self.ui.listViewLocalRule.setEnabled(False)
+        self.ui.listViewForwardRule.setEnabled(False)
+        self.ui.listViewUserPO.setEnabled(False)
+
     def createMenuBar(self):
         self.menuBar = QtWidgets.QMenuBar(self)
         self.setMenuBar(self.menuBar)
@@ -55,8 +89,10 @@ class MyWin(QtWidgets.QMainWindow):
         fileMenu = QtWidgets.QMenu('&Файл', self)
         self.menuBar.addMenu(fileMenu)
 
-        fileMenu.addAction('Открыть', self.openDialogOpenVul)
-        fileMenu.addAction('Сохранить', self.action_save_clicked)
+        fileMenu.addAction('Открыть отчёты об уязвимостях', self.openDialogOpenVul)
+        fileMenu.addSeparator()
+        fileMenu.addAction('Открыть проект', self.action_save_clicked)
+        fileMenu.addAction('Сохранить проект', self.action_save_clicked)
 
     @QtCore.pyqtSlot() #аннотация обработки нажатия в меню
     def action_save_clicked(self):
@@ -97,17 +133,17 @@ class MyWin(QtWidgets.QMainWindow):
                         'SELECT * FROM report_vulnerability WHERE report_vulnerability.id = ' + str(
                             group_vul[2]) + ';')
                     result_vul = cur.fetchone()
-                    cur.execute(
-                        'SELECT * FROM report_cvss2 WHERE report_cvss2.id = ' + str(
-                            result_vul[5]) + ';')
-                    cvss2 = cur.fetchone()
-                    cur.execute(
-                        'SELECT * FROM report_cvss3 WHERE report_cvss3.id = ' + str(
-                            result_vul[6]) + ';')
-                    cvss3 = cur.fetchone()
+                    # cur.execute(
+                    #     'SELECT * FROM report_cvss2 WHERE report_cvss2.id = ' + str(
+                    #         result_vul[5]) + ';')
+                    # cvss2 = cur.fetchone()
+                    # cur.execute(
+                    #     'SELECT * FROM report_cvss3 WHERE report_cvss3.id = ' + str(
+                    #         result_vul[6]) + ';')
+                    # cvss3 = cur.fetchone()
                     vulnerubility = {'name': result_vul[1], 'shortdescription': result_vul[2],
                                      'description': result_vul[3],
-                                     'solution': result_vul[4], 'cvss2': cvss2[1], 'cvss3': cvss3[1], 'id': result_vul[0]}
+                                     'solution': result_vul[4], 'cvss2': result_vul[5] + " Score:" + result_vul[7], 'cvss3': result_vul[6]+ " Score:" + result_vul[8], 'id': result_vul[0]}
                     tmp_all_vul.append(vulnerubility)
 
                 tmp_port_dict[str(port[1]) + '-' + str(port[2]) + '/' + str(port[3])] = tmp_all_vul
@@ -126,7 +162,6 @@ class MyWin(QtWidgets.QMainWindow):
                     child.appendRow(child_child)
                 parent.appendRow(child)
             model.appendRow(parent)
-
         self.ui.treeViewVul.clicked.connect(self.treeFunction)
         self.ui.groupVal.setEnabled(True)
 
@@ -248,6 +283,17 @@ class MyWin(QtWidgets.QMainWindow):
                         self.ui.lineCVSS2Edit.setText(item[key])
                     elif self.ui.lineCVSS3Edit.objectName().lower().find(str(key)) != -1:
                         self.ui.lineCVSS3Edit.setText(item[key])
+
+        #Вывод данных, которые ты получил
+        if self.ui.widgetGroup.isHidden() == False:
+            self.ui.labelVulLVL.setText('Среднее значение уровеня опасности')
+            self.ui.label11lvlVulnaribility.setText('1224')
+            self.ui.label11lvlNode.setText('12')
+            self.ui.label11lvlPort.setText('97')
+            pass
+        self.ui.labelVulLVL.setHidden(False)
+        self.ui.lineVulLVL.setHidden(False)
+        self.ui.openVul.setEnabled(True)
 
     def editText(self):
         if self.ui.widgetVulnerability.isHidden() == False:
@@ -371,11 +417,17 @@ class MyWin(QtWidgets.QMainWindow):
             self.ui.textShortDescriptionEdit.setReadOnly(True)
             self.ui.lineNameVulEdit.setReadOnly(True)
 
+    def chooseGroupVul(self):
+        self.ui.labelVulLVL.setText('Уровень опасности')
+        self.ui.widgetVulnerability.setHidden(False)
+        pass
+
 #####################################################Group
     def openDialogGroup(self):
         model_nodes = self.ui.treeViewVul.model()
         nodes = []
         for i in range(0, model_nodes.rowCount()):
+
             try:
                 ipaddress.ip_address(model_nodes.item(i).text())
                 nodes.append(model_nodes.item(i).text())
@@ -386,6 +438,11 @@ class MyWin(QtWidgets.QMainWindow):
 
         if dialog.exec_() == QtWidgets.QDialog.Accepted:  # Получаем после закрытия диалогового окна
             keys = list(self.all_vul.keys())
+
+            # print(dialog.di.listNodesChosen.model().item(0).text())
+            if len(dialog.di.lineEditNameGroup.text()) == 0:
+                self.errorMessange('Вы не ввели название гурппы')
+                return 0
             if dialog.di.lineEditNameGroup.text() in keys:
                 self.errorMessange('Группа с таким названием есть, выберите другое!')
                 return 0
@@ -403,20 +460,27 @@ class MyWin(QtWidgets.QMainWindow):
                     self.errorMessange('Нет узлов, которые можно группировать')
                     return 0
                 need_nodes = []  # Нужные узлы, которые выбрали в диалоговом окне
+                if (dialog.di.lineEditStartIP.text() == '0.0.0.0'):  #Выброчная группировка
 
-                if (dialog.di.comboBox.currentIndex() == 0):
-                    start_IP = ipaddress.ip_address(dialog.di.lineEditStartIP.text())
-                    end_IP = ipaddress.ip_address(dialog.di.lineEditEndIP.text())
+                    model_nodes = dialog.di.listNodesChosen.model()
+                    if (model_nodes != None):
+                        for i in range(0, model_nodes.rowCount()):
+                            need_nodes.append(ipaddress.ip_address(model_nodes.item(i).text()))
 
-                    for i in range(0, len(all_nodes)):
-                        if start_IP < all_nodes[i] < end_IP:
-                            need_nodes.append(all_nodes[i])
+                else: #Диапозон
+                    if (dialog.di.comboBox.currentIndex() == 0):
+                        start_IP = ipaddress.ip_address(dialog.di.lineEditStartIP.text())
+                        end_IP = ipaddress.ip_address(dialog.di.lineEditEndIP.text())
 
-                else:
-                    subnet = ipaddress.ip_network(dialog.di.lineEditStartIP.text())
-                    for i in range(0, len(all_nodes)):
-                        if all_nodes[i] in subnet:
-                            need_nodes.append(all_nodes[i])
+                        for i in range(0, len(all_nodes)):
+                            if start_IP < all_nodes[i] < end_IP:
+                                need_nodes.append(all_nodes[i])
+
+                    else:
+                        subnet = ipaddress.ip_network(dialog.di.lineEditStartIP.text())
+                        for i in range(0, len(all_nodes)):
+                            if all_nodes[i] in subnet:
+                                need_nodes.append(all_nodes[i])
                 if len(need_nodes) == 0:
                     self.errorMessange('Таких узлов нет, либо эти узлы в группе')
                     return 0
@@ -489,7 +553,6 @@ class MyWin(QtWidgets.QMainWindow):
         dialog = dialog_filter.ClssDialogFilter(self)
 
         if dialog.exec_() == QtWidgets.QDialog.Accepted:  # Получаем после закрытия диалогового окна
-            print(dialog.tmp)
             pass
 #####################################################filter
 

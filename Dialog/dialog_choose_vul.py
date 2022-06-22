@@ -34,14 +34,14 @@ class ClssDialogChooseVul(QtWidgets.QDialog):
             if (value[6] != 0 and value[6] != 'null') or (value[5] != 0 and value[5] != 'null'):
                 vul_name = str( value[1])
                 vul_id = str( value[0])
-                if value[6] != 0 or value[6] != 'null':
-                    cur.execute('SELECT * FROM report_cvss3 where "id" = ' + str(value[6]) + ' ;')
-                    cvss = cur.fetchone()  # Картежи!
-                else:
-                    cur.execute('SELECT * FROM report_cvss2 where "id" = ' + str(value[5]) + ' ;')
-                    cvss = cur.fetchone()  # Картежи!
-                self.cvss_list.append(cvss)
-                stroka = vul_id  +')' +vul_name + str(cvss[1])
+                # if value[6] != 0 or value[6] != 'null':
+                #     cur.execute('SELECT * FROM report_cvss3 where "id" = ' + str(value[6]) + ' ;')
+                #     cvss = cur.fetchone()  # Картежи!
+                # else:
+                #     cur.execute('SELECT * FROM report_cvss2 where "id" = ' + str(value[5]) + ' ;')
+                #     cvss = cur.fetchone()  # Картежи!
+                # self.cvss_list.append(cvss)
+                stroka = vul_id  +')' +vul_name
                 qitem = QtGui.QStandardItem(stroka)
                 model.appendRow(qitem)
         self.di_2.listView.clicked.connect(self.listChoosen)

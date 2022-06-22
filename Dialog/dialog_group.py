@@ -15,6 +15,22 @@ class ClssDialogGroup(QtWidgets.QDialog):
         self.di.nodeAdd.clicked.connect(self.nodeAddtoChosen)
         self.di.nodeDelete.clicked.connect(self.nodeAddfromChosentoAll)
         self.setWindowTitle('Функциональная группировка узлов')
+        self.di.buttonBox.clicked.connect(self.btnClosed)
+        self.di.rangeAddWidget.currentChanged.connect(self.checkMe)
+
+    def checkMe(self, index):
+        if index == 0:
+
+            model_nodes = self.di.listNodesChosen.model()
+            if (model_nodes != None):
+                print(model_nodes.rowCount())
+                for i in range(0, model_nodes.rowCount()):
+                    self.indexClickedDelete = 0
+                    self.nodeAddfromChosentoAll()
+        elif index == 1:
+            self.di.lineEditStartIP.setText('0.0.0.0')
+            self.di.lineEditEndIP.setText('0.0.0.0')
+        print(index)
 
     def setNodes(self, nodes):
         model = QtGui.QStandardItemModel()
@@ -44,13 +60,14 @@ class ClssDialogGroup(QtWidgets.QDialog):
             self.di.listNodesChosen.setModel(model_chosen)
 
         model_nodes = self.di.listNodesAll.model()
-        chosen = ((model_nodes.item(self.indexClickedAdd).text()))
+        chosen = model_nodes.item(self.indexClickedAdd).text()
 
         model_chosen.appendRow(QtGui.QStandardItem(chosen))
         model_nodes.removeRows(self.indexClickedAdd, 1)
         self.di.nodeAdd.setEnabled(False)
 
     def nodeAddfromChosentoAll(self):
+
         model_nodes = self.di.listNodesAll.model()
         if (model_nodes == None):
             model_nodes = QtGui.QStandardItemModel()
@@ -62,6 +79,7 @@ class ClssDialogGroup(QtWidgets.QDialog):
         model_nodes.appendRow(QtGui.QStandardItem(chosen))
         model_chosen.removeRows(self.indexClickedDelete, 1)
         self.di.nodeDelete.setEnabled(False)
+
     def inputEndIp(self, index):
         if index.row() != 0:
             self.di.lineEditEndIP.setEnabled(False)
