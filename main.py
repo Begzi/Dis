@@ -6,6 +6,7 @@ import dialog_group
 import main_window
 import dialog_choose_vul
 import dialog_filter
+import dialog_op_add
 import ipaddress
 import function
 import sqlite3
@@ -48,7 +49,8 @@ class MyWin(QtWidgets.QMainWindow):
         self.createMenuBar()
 
         self.ui.addLocalRule.clicked.connect(self.openDialogAddLocalRule)
-        self.ui.addForwardRule.clicked.connect(self.openDialogAddLocalRule)
+        self.ui.addForwardRule.clicked.connect(self.openDialogAddForwardRule)
+        self.ui.addUserPO.clicked.connect(self.openDialogAddPO)
 
         self.ui.lvl11Btn.clicked.connect(self.chooseGroupVul)
 
@@ -65,19 +67,32 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.saveForwardRule.setHidden(True)
         self.ui.cancelForwardRule.setHidden(True)
         self.ui.deleteForwardRule.setHidden(True)
+        self.ui.deleteForwardRule.setHidden(True)
+        self.ui.pushForwardDown.setHidden(True)
+        self.ui.pushForwardUp.setHidden(True)
 
         self.ui.editLocalRule.setHidden(True)
         self.ui.saveLocalRule.setHidden(True)
         self.ui.cancelLocalRule.setHidden(True)
         self.ui.deleteLocalRule.setHidden(True)
+        self.ui.pushLocalDown.setHidden(True)
+        self.ui.pushLocalUp.setHidden(True)
 
 
         model_default = QtGui.QStandardItemModel()
-        qitem = QtGui.QStandardItem("Все")
+        qitem = QtGui.QStandardItem()
+        qitem.setCheckState(QtCore.Qt.Checked)
+        qitem.setText('Действие: Разрешенно | Источники: Все | Назначение: Все | Порты: Все')
         model_default.appendRow(qitem)
+
+        model_default_PO = QtGui.QStandardItemModel()
+        qitem = QtGui.QStandardItem()
+        qitem.setText('Неизвестные: Все ')
+        model_default_PO.appendRow(qitem)
+
         self.ui.listViewLocalRule.setModel(model_default)
         self.ui.listViewForwardRule.setModel(model_default)
-        self.ui.listViewUserPO.setModel(model_default)
+        self.ui.listViewUserPO.setModel(model_default_PO)
         self.ui.listViewLocalRule.setEnabled(False)
         self.ui.listViewForwardRule.setEnabled(False)
         self.ui.listViewUserPO.setEnabled(False)
@@ -555,6 +570,57 @@ class MyWin(QtWidgets.QMainWindow):
         if dialog.exec_() == QtWidgets.QDialog.Accepted:  # Получаем после закрытия диалогового окна
             pass
 #####################################################filter
+#####################################################filter
+    def openDialogAddForwardRule(self):
+
+        self.ui.saveForwardRule.setEnabled(True)
+        self.ui.cancelForwardRule.setEnabled(True)
+        dialog = dialog_filter.ClssDialogFilter(self)
+
+        if dialog.exec_() == QtWidgets.QDialog.Accepted:  # Получаем после закрытия диалогового окна
+
+            modelDSTIP = dialog.di.listDSTIP.model()
+            modelSRCIP = dialog.di.listSRCIP.model()
+            modelPort = dialog.di.listViewPort.model()
+            srcIP = ''
+            dstIP = ''
+            port = ''
+            for i in range(0, modelSRCIP.rowCount()):
+                srcIP += modelSRCIP.item(i).text() + '; '
+            for i in range(0, modelDSTIP.rowCount()):
+                dstIP += modelDSTIP.item(i).text() + '; '
+            for i in range(0, modelPort.rowCount()):
+                port += modelPort.item(i).text() + '; '
+
+            nameRule = dialog.di.lineEdit.text()
+            if dialog.di.radioBlock.isChecked():
+                action = 'Блокировать'
+            else:
+                action = 'Разешено'
+            turnOn = dialog.di.checkBox.isChecked()
+
+            model = self.ui.listViewForwardRule.model()
+
+            if (model.rowCount() == 1 and model.item(0).text() == 'Все'):
+                self.ui.listViewForwardRule.setEnabled(True)
+                model.removeRow(0)
+                model = QtGui.QStandardItemModel()
+                self.ui.listViewForwardRule.setModel(model)
+            item = QtGui.QStandardItem(str(turnOn) + ' ' + str(nameRule) + ' ' + str(action) + ' ' + str(srcIP) + ' ' + str(dstIP) + ' ' + str(port))
+            model.appendRow(item)
+
+#####################################################filter
+#####################################################PO
+    def openDialogAddPO(self):
+
+        self.ui.saveUserPO.setEnabled(True)
+        self.ui.cancelUserPO.setEnabled(True)
+        dialog = dialog_op_add.ClssDialogOPAdd(self)
+
+        if dialog.exec_() == QtWidgets.QDialog.Accepted:  # Получаем после закрытия диалогового окна
+            pass
+
+#####################################################PO
 
     def errorMessange(self, text):
         error = QtWidgets.QMessageBox()

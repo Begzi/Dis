@@ -17,11 +17,11 @@
    <item>
     <widget class="QTabWidget" name="genTab">
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="mainTab">
       <attribute name="title">
-       <string>Основные параметры фильтра</string>
+       <string>Основные параметры правила</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
@@ -105,16 +105,6 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="editSRCRangeIP">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>Свойства</string>
-           </property>
-          </widget>
-         </item>
-         <item>
           <widget class="QPushButton" name="deleteSRCRangeIP">
            <property name="enabled">
             <bool>false</bool>
@@ -159,16 +149,6 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="editDSTRangeIP">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>Свойства</string>
-           </property>
-          </widget>
-         </item>
-         <item>
           <widget class="QPushButton" name="deleteDSTRangeIP">
            <property name="enabled">
             <bool>false</bool>
@@ -209,16 +189,6 @@
           <widget class="QPushButton" name="addPort">
            <property name="text">
             <string>Добавить</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="editPort">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>Свойства</string>
            </property>
           </widget>
          </item>

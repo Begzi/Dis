@@ -620,7 +620,7 @@
        <item>
         <widget class="QTabWidget" name="firewallWidget">
          <property name="currentIndex">
-          <number>2</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="localFirewall">
           <property name="accessibleName">
@@ -652,6 +652,26 @@
               <widget class="QPushButton" name="addLocalRule">
                <property name="text">
                 <string>Добавить</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushLocalUp">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>Вверх</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushLocalDown">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>Вниз</string>
                </property>
               </widget>
              </item>
@@ -726,6 +746,26 @@
               <widget class="QPushButton" name="addForwardRule">
                <property name="text">
                 <string>Добавить</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushForwardUp">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>Вверх</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushForwardDown">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>Вниз</string>
                </property>
               </widget>
              </item>

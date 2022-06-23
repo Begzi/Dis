@@ -1,1 +1,1 @@
-pyuic5.exe -x C:\py\Dis\GUI\main_window.ui -o C:\py\Dis\GUI\main_window.py
+pyuic5.exe -x C:\py\Dis\GUI\dialog_window_filter.ui -o C:\py\Dis\GUI\dialog_window_filter.py

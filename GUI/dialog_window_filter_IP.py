@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(473, 285)
+        Dialog.resize(473, 234)
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(Dialog)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
@@ -93,7 +93,7 @@ class Ui_Dialog(object):
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_4.addItem(spacerItem2)
         self.pushAdd = QtWidgets.QPushButton(Dialog)
-        self.pushAdd.setEnabled(False)
+        self.pushAdd.setEnabled(True)
         self.pushAdd.setObjectName("pushAdd")
         self.horizontalLayout_4.addWidget(self.pushAdd)
         self.pushCancel = QtWidgets.QPushButton(Dialog)
