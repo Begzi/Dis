@@ -414,14 +414,14 @@
     <widget class="QWidget" name="widget_4" native="true">
      <layout class="QVBoxLayout" name="verticalLayout_9">
       <item>
-       <widget class="QRadioButton" name="radioButton">
+       <widget class="QRadioButton" name="radioNeed">
         <property name="text">
          <string>Важный </string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="radioButton_2">
+       <widget class="QRadioButton" name="radioNotNeed">
         <property name="text">
          <string>Вспомогательный</string>
         </property>

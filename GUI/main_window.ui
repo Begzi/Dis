@@ -23,7 +23,7 @@
       <string notr="true"/>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="val">
       <attribute name="title">
@@ -620,7 +620,7 @@
        <item>
         <widget class="QTabWidget" name="firewallWidget">
          <property name="currentIndex">
-          <number>1</number>
+          <number>2</number>
          </property>
          <widget class="QWidget" name="localFirewall">
           <property name="accessibleName">
@@ -658,7 +658,7 @@
              <item>
               <widget class="QPushButton" name="pushLocalUp">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="text">
                 <string>Вверх</string>
@@ -668,7 +668,7 @@
              <item>
               <widget class="QPushButton" name="pushLocalDown">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="text">
                 <string>Вниз</string>
@@ -678,7 +678,7 @@
              <item>
               <widget class="QPushButton" name="editLocalRule">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="text">
                 <string>Редактировать</string>
@@ -688,7 +688,7 @@
              <item>
               <widget class="QPushButton" name="saveLocalRule">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="text">
                 <string>Сохранить</string>
@@ -698,7 +698,7 @@
              <item>
               <widget class="QPushButton" name="cancelLocalRule">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="text">
                 <string>Отмена</string>
@@ -708,7 +708,7 @@
              <item>
               <widget class="QPushButton" name="deleteLocalRule">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="text">
                 <string>Удалить</string>
@@ -752,7 +752,7 @@
              <item>
               <widget class="QPushButton" name="pushForwardUp">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="text">
                 <string>Вверх</string>
@@ -762,7 +762,7 @@
              <item>
               <widget class="QPushButton" name="pushForwardDown">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="text">
                 <string>Вниз</string>
@@ -772,7 +772,7 @@
              <item>
               <widget class="QPushButton" name="editForwardRule">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="text">
                 <string>Редактировать</string>
@@ -782,7 +782,7 @@
              <item>
               <widget class="QPushButton" name="saveForwardRule">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="text">
                 <string>Сохранить</string>
@@ -792,7 +792,7 @@
              <item>
               <widget class="QPushButton" name="cancelForwardRule">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="text">
                 <string>Отмена</string>
@@ -802,7 +802,7 @@
              <item>
               <widget class="QPushButton" name="deleteForwardRule">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="text">
                 <string>Удалить</string>
@@ -846,7 +846,7 @@
              <item>
               <widget class="QPushButton" name="editUserPO">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="text">
                 <string>Редактировать</string>
@@ -856,7 +856,7 @@
              <item>
               <widget class="QPushButton" name="saveUserPO">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="text">
                 <string>Сохранить</string>
@@ -866,7 +866,7 @@
              <item>
               <widget class="QPushButton" name="cancelUserPO">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="text">
                 <string>Отмена</string>
@@ -876,7 +876,7 @@
              <item>
               <widget class="QPushButton" name="deleteUserPO">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="text">
                 <string>Удалить</string>
@@ -895,7 +895,7 @@
       <attribute name="title">
        <string>CVSS</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_4" stretch="1">
+      <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0">
        <item>
         <widget class="QWidget" name="widget" native="true">
          <property name="styleSheet">
@@ -911,9 +911,9 @@
              <property name="geometry">
               <rect>
                <x>0</x>
-               <y>0</y>
+               <y>-794</y>
                <width>921</width>
-               <height>1398</height>
+               <height>1308</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_5" stretch="1,0,0,0,0,0">
@@ -1014,7 +1014,7 @@
                    <item>
                     <widget class="QLabel" name="labelUnputBase">
                      <property name="text">
-                      <string>0.0(Низкое)</string>
+                      <string>6.1 (Низкое)</string>
                      </property>
                     </widget>
                    </item>
@@ -1129,7 +1129,7 @@
                         </sizepolicy>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Без изменений (U)</string>
@@ -1143,6 +1143,9 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Изменено (C)</string>
@@ -1249,7 +1252,7 @@
                         </sizepolicy>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Нет (N)</string>
@@ -1263,6 +1266,9 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Низкий (L)</string>
@@ -1395,7 +1401,7 @@
                         </sizepolicy>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Нет (N)</string>
@@ -1409,6 +1415,9 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Низкий (L)</string>
@@ -1479,7 +1488,7 @@
                         </sizepolicy>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Нет (N)</string>
@@ -1493,6 +1502,9 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Требуется (R)</string>
@@ -1624,7 +1636,7 @@
                    <item>
                     <widget class="QLabel" name="labelUnputTamporal">
                      <property name="text">
-                      <string>0.0(Низкое)</string>
+                      <string>5.1 (Средний)</string>
                      </property>
                     </widget>
                    </item>
@@ -1670,7 +1682,7 @@
                         </sizepolicy>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
+                        <string notr="true"> </string>
                        </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
@@ -1684,6 +1696,9 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Недоказанный (U) </string>
@@ -1774,7 +1789,7 @@
                         </sizepolicy>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
+                        <string notr="true"> </string>
                        </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
@@ -1788,6 +1803,9 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Недоступно (U) </string>
@@ -1884,7 +1902,7 @@
                         </sizepolicy>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
+                        <string notr="true"> </string>
                        </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
@@ -1911,6 +1929,9 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Разумный (R) </string>
@@ -1996,7 +2017,7 @@
                    <item>
                     <widget class="QLabel" name="labelUnputEnvironmental">
                      <property name="text">
-                      <string>0.0(Низкое)</string>
+                      <string>8.1 (Высокое)</string>
                      </property>
                     </widget>
                    </item>
@@ -2036,7 +2057,7 @@
                         </sizepolicy>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
+                        <string notr="true"> </string>
                        </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
@@ -2076,6 +2097,9 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Высокий (Н) </string>
@@ -2216,7 +2240,7 @@
                         </sizepolicy>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
+                        <string notr="true"> </string>
                        </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
@@ -2256,6 +2280,9 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Высокий (Н) </string>
@@ -2376,7 +2403,7 @@
                         </sizepolicy>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
+                        <string notr="true"> </string>
                        </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
@@ -2416,6 +2443,9 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Высокий (Н) </string>
@@ -2697,7 +2727,7 @@
                         </sizepolicy>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">background-color: rgb(92, 255, 56);</string>
+                        <string notr="true"> </string>
                        </property>
                        <property name="text">
                         <string>Не определено (Х) </string>
@@ -2737,6 +2767,9 @@
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color: rgb(92, 255, 56);</string>
                        </property>
                        <property name="text">
                         <string>Высокий (Н) </string>
@@ -2949,6 +2982,9 @@
                    <property name="enabled">
                     <bool>true</bool>
                    </property>
+                   <property name="text">
+                    <string>Уязвимость веб-браузеров Firefox ESR и почтового клиента Thunderbird, связанная с ошибкой освобождения памяти при обработке HTML-содержимого после уничтожения процесса VR, позволяющая нарушителю выполнить произвольный код</string>
+                   </property>
                    <property name="readOnly">
                     <bool>true</bool>
                    </property>
@@ -2998,6 +3034,13 @@
                    <property name="readOnly">
                     <bool>true</bool>
                    </property>
+                   <property name="html">
+                    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:72; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Уязвимость веб-браузеров Firefox ESR и почтового клиента Thunderbird  с ошибкой освобождения памяти при обработке HTML-содержимого после уничтожения процесса VR. Эксплуатация уязвимости может позволить нарушителю, действующему удалённо, выполнить произвольный код&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
                   </widget>
                  </item>
                  <item>
@@ -3021,39 +3064,27 @@
                    <property name="readOnly">
                     <bool>true</bool>
                    </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="labelVul5_2">
-                   <property name="text">
-                    <string>CVSS2</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLineEdit" name="lineCVSS2EditAll">
-                   <property name="enabled">
-                    <bool>true</bool>
-                   </property>
-                   <property name="readOnly">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="labelVul6_2">
-                   <property name="text">
-                    <string>CVSS3</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLineEdit" name="lineCVSS3EditAll">
-                   <property name="enabled">
-                    <bool>true</bool>
-                   </property>
-                   <property name="readOnly">
-                    <bool>true</bool>
+                   <property name="html">
+                    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:72; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Использование рекомендаций:&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Для программных продуктов Mozilla Corp.:&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;https://www.mozilla.org/en-US/security/advisories/mfsa2022-15/&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;https://www.mozilla.org/en-US/security/advisories/mfsa2022-14/&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Для Debian GNU/Linux:&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;https://security-tracker.debian.org/tracker/CVE-2022-1196&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Для программных продуктов Novell Inc.:&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;https://www.suse.com/security/cve/CVE-2022-1196.html&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Для программных продуктов Red Hat Inc.:&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;https://access.redhat.com/security/cve/CVE-2022-1196&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Для РедОС:&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;http://repo.red-soft.ru/redos/7.3c/x86_64/updates/&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                   </widget>
                  </item>

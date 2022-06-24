@@ -79,23 +79,31 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushLocalUp.setHidden(True)
 
 
-        model_default = QtGui.QStandardItemModel()
+        model_default_local = QtGui.QStandardItemModel()
         qitem = QtGui.QStandardItem()
-        qitem.setCheckState(QtCore.Qt.Checked)
-        qitem.setText('Действие: Разрешенно | Источники: Все | Назначение: Все | Порты: Все')
-        model_default.appendRow(qitem)
+        qitem.setText('Статус: Работает | Действие: Разрешать | Источники: Все | Назначение: Все | Порты: Все')
+        model_default_local.appendRow(qitem)
+
+        model_default_forward = QtGui.QStandardItemModel()
+        qitem = QtGui.QStandardItem()
+        qitem.setText('Статус: Работает | Действие: Разрешать | Источники: Все | Назначение: Все | Порты: Все')
+        model_default_forward.appendRow(qitem)
 
         model_default_PO = QtGui.QStandardItemModel()
         qitem = QtGui.QStandardItem()
         qitem.setText('Неизвестные: Все ')
         model_default_PO.appendRow(qitem)
 
-        self.ui.listViewLocalRule.setModel(model_default)
-        self.ui.listViewForwardRule.setModel(model_default)
+        self.ui.listViewLocalRule.setModel(model_default_local)
+        self.ui.listViewForwardRule.setModel(model_default_forward)
         self.ui.listViewUserPO.setModel(model_default_PO)
         self.ui.listViewLocalRule.setEnabled(False)
         self.ui.listViewForwardRule.setEnabled(False)
         self.ui.listViewUserPO.setEnabled(False)
+
+        self.ui.listViewLocalRule.clicked.connect(self.showAnotherButtonsLocal)
+        self.ui.listViewForwardRule.clicked.connect(self.showAnotherButtonsForward)
+        self.ui.listViewUserPO.clicked.connect(self.showAnotherButtonsOP)
 
     def createMenuBar(self):
         self.menuBar = QtWidgets.QMenuBar(self)
@@ -553,6 +561,7 @@ class MyWin(QtWidgets.QMainWindow):
 #####################################################cvss
     def openDialogChooseVulnaribilityCVSS(self):
         self.ui.calcVulnaribilityBtn.setEnabled(True)
+        self.ui.saveVulnaribilityBtn.setEnabled(True)
         dialog = dialog_choose_vul.ClssDialogChooseVul(self)
 
         if dialog.exec_() == QtWidgets.QDialog.Accepted:  # Получаем после закрытия диалогового окна
@@ -561,16 +570,71 @@ class MyWin(QtWidgets.QMainWindow):
             print(self.ui.horizontalLayout_8.findChildren(self, QtWidgets.QPushButton))
             pass
 #####################################################cvss
-#####################################################filter
+#####################################################filterlocal
     def openDialogAddLocalRule(self):
         self.ui.saveLocalRule.setEnabled(True)
         self.ui.cancelLocalRule.setEnabled(True)
         dialog = dialog_filter.ClssDialogFilter(self)
 
         if dialog.exec_() == QtWidgets.QDialog.Accepted:  # Получаем после закрытия диалогового окна
-            pass
-#####################################################filter
-#####################################################filter
+
+            modelDSTIP = dialog.di.listDSTIP.model()
+            modelSRCIP = dialog.di.listSRCIP.model()
+            modelPort = dialog.di.listViewPort.model()
+            srcIP = ''
+            dstIP = ''
+            port = ''
+            for i in range(0, modelSRCIP.rowCount()):
+                srcIP += modelSRCIP.item(i).text() + '; '
+            for i in range(0, modelDSTIP.rowCount()):
+                dstIP += modelDSTIP.item(i).text() + '; '
+            for i in range(0, modelPort.rowCount()):
+                port += modelPort.item(i).text() + '; '
+
+            nameRule = dialog.di.lineEdit.text()
+            if dialog.di.radioBlock.isChecked():
+                action = 'Блокировать'
+            else:
+                action = 'Разрешать'
+            turnOn = dialog.di.checkBox.isChecked()
+
+            model = self.ui.listViewLocalRule.model()
+            if (model.rowCount() == 1 and model.item(0).text() == 'Статус: Работает | Действие: Разрешать | Источники: Все | Назначение: Все | Порты: Все'):
+                self.ui.listViewLocalRule.setEnabled(True)
+                model.removeRow(0)
+                model = QtGui.QStandardItemModel()
+                self.ui.listViewLocalRule.setModel(model)
+                model.appendRow(QtGui.QStandardItem(
+                    'Статус: Работает | Правило по умолчанию | Действие: Блокировать | Источники: Все | Назначение: Все | Порты: Все'))
+
+            item = QtGui.QStandardItem()
+            if turnOn:
+                status = 'Работает'
+            else:
+                status = 'Отключено'
+
+            item.setText("Статус: " + status + ' | Название: ' + str(nameRule) + ' | Действие: ' + str(action) +
+                                       ' | Источники: ' + str(srcIP) + ' | Назначение: ' + str(dstIP) +
+                                       ' | Порты: ' + str(port))
+            model.insertRow(0, item)
+
+            self.ui.saveLocalRule.setHidden(False)
+            self.ui.cancelLocalRule.setHidden(False)
+
+    def showAnotherButtonsLocal(self, index):
+        if index.row() == self.ui.listViewLocalRule.model().rowCount() - 1:
+            self.ui.pushLocalUp.setHidden(True)
+            self.ui.pushLocalDown.setHidden(True)
+            self.ui.editLocalRule.setHidden(True)
+            self.ui.deleteLocalRule.setHidden(True)
+        else:
+            self.ui.pushLocalUp.setHidden(False)
+            self.ui.pushLocalDown.setHidden(False)
+            self.ui.editLocalRule.setHidden(False)
+            self.ui.deleteLocalRule.setHidden(False)
+
+#####################################################filterlocal
+#####################################################filterforward
     def openDialogAddForwardRule(self):
 
         self.ui.saveForwardRule.setEnabled(True)
@@ -596,20 +660,44 @@ class MyWin(QtWidgets.QMainWindow):
             if dialog.di.radioBlock.isChecked():
                 action = 'Блокировать'
             else:
-                action = 'Разешено'
+                action = 'Разрешать'
             turnOn = dialog.di.checkBox.isChecked()
 
             model = self.ui.listViewForwardRule.model()
-
-            if (model.rowCount() == 1 and model.item(0).text() == 'Все'):
+            if (model.rowCount() == 1 and model.item(
+                    0).text() == 'Статус: Работает | Действие: Разрешать | Источники: Все | Назначение: Все | Порты: Все'):
                 self.ui.listViewForwardRule.setEnabled(True)
                 model.removeRow(0)
                 model = QtGui.QStandardItemModel()
                 self.ui.listViewForwardRule.setModel(model)
-            item = QtGui.QStandardItem(str(turnOn) + ' ' + str(nameRule) + ' ' + str(action) + ' ' + str(srcIP) + ' ' + str(dstIP) + ' ' + str(port))
-            model.appendRow(item)
+                model.appendRow(QtGui.QStandardItem('Статус: Работает | Правило по умолчанию | Действие: Блокировать | Источники: Все | Назначение: Все | Порты: Все'))
 
-#####################################################filter
+            item = QtGui.QStandardItem()
+            if turnOn:
+                status = 'Работает'
+            else:
+                status = 'Отключено'
+
+            item.setText("Статус: " + status + ' | Название: ' + str(nameRule) + ' | Действие: ' + str(action) +
+                                       ' | Источники: ' + str(srcIP) + ' | Назначение: ' + str(dstIP) +
+                                       ' | Порты: ' + str(port))
+            model.insertRow(0, item)
+
+            self.ui.saveForwardRule.setHidden(False)
+            self.ui.cancelForwardRule.setHidden(False)
+
+    def showAnotherButtonsForward(self, index):
+        if index.row() == self.ui.listViewForwardRule.model().rowCount() - 1:
+            self.ui.pushForwardUp.setHidden(True)
+            self.ui.pushForwardDown.setHidden(True)
+            self.ui.editForwardRule.setHidden(True)
+            self.ui.deleteForwardRule.setHidden(True)
+        else:
+            self.ui.pushForwardUp.setHidden(False)
+            self.ui.pushForwardDown.setHidden(False)
+            self.ui.editForwardRule.setHidden(False)
+            self.ui.deleteForwardRule.setHidden(False)
+#####################################################filterforward
 #####################################################PO
     def openDialogAddPO(self):
 
@@ -618,7 +706,69 @@ class MyWin(QtWidgets.QMainWindow):
         dialog = dialog_op_add.ClssDialogOPAdd(self)
 
         if dialog.exec_() == QtWidgets.QDialog.Accepted:  # Получаем после закрытия диалогового окна
-            pass
+
+            if dialog.di.radioTCP.isChecked():
+                protocol = 'TCP'
+            else:
+                protocol = 'UDP'
+
+            if dialog.di.radioSRCALL.isChecked():
+                srcProts = 'Все'
+            elif dialog.di.radioSRCPort.isChecked():
+                try:
+                    srcProts = str(int(dialog.di.lineSRCPort.text()))
+                except:
+                    self.errorMessange('Порт источника введён не корректно, разрешается только цифры')
+            elif dialog.di.radioSRCPorts.isChecked():
+                try:
+                    srcProts = str(int(dialog.di.lineSRCPorts1.text())) + '-' + str(int(dialog.di.lineSRCPorts2.text()))
+                except:
+                    self.errorMessange('Порты источника введены не корректно, разрешается только цифры')
+
+            if dialog.di.radioDSTALL.isChecked():
+                dstProts = 'Все'
+            elif dialog.di.radioDSTPort.isChecked():
+                try:
+                    dstProts = str(int(dialog.di.lineDSTPort.text()))
+                except:
+                    self.errorMessange('Порт источника введён не корректно, разрешается только цифры')
+            elif dialog.di.radioDSTPorts.isChecked():
+                try:
+                    dstProts = str(int(dialog.di.lineDSTPorts1.text())) + '-' + str(int(dialog.di.lineDSTPorts2.text()))
+                except:
+                    self.errorMessange('Порты источника введены не корректно, разрешается только цифры')
+
+            if dialog.di.radioNotNeed.isChecked():
+                need = "Вспомогательный IT-актив: "
+            else:
+                need = "Важный IT-актив: "
+
+            port = "от " + srcProts + ' до ' + dstProts
+
+            model = self.ui.listViewUserPO.model()
+            print(model.rowCount())
+            print(model.item(0).text())
+            if (model.rowCount() == 1 and model.item(0).text() == 'Неизвестные: Все '):
+                self.ui.listViewUserPO.setEnabled(True)
+                print('check')
+                model.removeRow(0)
+                model = QtGui.QStandardItemModel()
+                self.ui.listViewUserPO.setModel(model)
+                model.appendRow(QtGui.QStandardItem('Остальные: Незивестные'))
+
+            item = QtGui.QStandardItem(need + dialog.di.lineName.text() + ' | Порты: ' + port +  ' | ' + protocol)
+            model.insertRow(0, item)
+
+            self.ui.saveUserPO.setHidden(False)
+            self.ui.cancelUserPO.setHidden(False)
+
+    def showAnotherButtonsOP(self, index):
+        if index.row() == self.ui.listViewUserPO.model().rowCount() - 1:
+            self.ui.editUserPO.setHidden(True)
+            self.ui.deleteUserPO.setHidden(True)
+        else:
+            self.ui.editUserPO.setHidden(False)
+            self.ui.deleteUserPO.setHidden(False)
 
 #####################################################PO
 

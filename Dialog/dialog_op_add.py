@@ -22,36 +22,56 @@ class ClssDialogOPAdd(QtWidgets.QDialog):
         self.di.radioDSTPort.clicked.connect(self.chooseDSTPort)
         self.di.radioDSTPorts.clicked.connect(self.chooseDSTPorts)
 
+        self.di.pushCancel.clicked.connect(self.close)
+        self.di.pushAdd.clicked.connect(self.btnClosed)
 
     def chooseSRCAll(self):
         self.di.lineSRCPorts1.setEnabled(False)
         self.di.lineSRCPorts2.setEnabled(False)
         self.di.lineSRCPort.setEnabled(False)
 
+        self.di.lineSRCPorts1.setText('')
+        self.di.lineSRCPorts2.setText('')
+        self.di.lineSRCPort.setText('')
+
     def chooseSRCPort(self):
         self.di.lineSRCPorts1.setEnabled(False)
         self.di.lineSRCPorts2.setEnabled(False)
         self.di.lineSRCPort.setEnabled(True)
+
+        self.di.lineSRCPorts1.setText('')
+        self.di.lineSRCPorts2.setText('')
 
     def chooseSRCPorts(self):
         self.di.lineSRCPorts1.setEnabled(True)
         self.di.lineSRCPorts2.setEnabled(True)
         self.di.lineSRCPort.setEnabled(False)
 
+        self.di.lineSRCPort.setText('')
+
     def chooseDSTAll(self):
         self.di.lineDSTPorts1.setEnabled(False)
         self.di.lineDSTPorts2.setEnabled(False)
         self.di.lineDSTPort.setEnabled(False)
+
+        self.di.lineDSTPorts1.setText('')
+        self.di.lineDSTPorts2.setText('')
+        self.di.lineDSTPort.setText('')
 
     def chooseDSTPort(self):
         self.di.lineDSTPorts1.setEnabled(False)
         self.di.lineDSTPorts2.setEnabled(False)
         self.di.lineDSTPort.setEnabled(True)
 
+        self.di.lineDSTPorts1.setText('')
+        self.di.lineDSTPorts2.setText('')
+
     def chooseDSTPorts(self):
         self.di.lineDSTPorts1.setEnabled(True)
         self.di.lineDSTPorts2.setEnabled(True)
         self.di.lineDSTPort.setEnabled(False)
+
+        self.di.lineDSTPort.setText('')
 
     def btnClosed(self):
         self.accept()

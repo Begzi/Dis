@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\py\Dis\GUI\dialog_window_OP_add.ui'
+# Form implementation generated from reading ui file 'C:\py\Dis\GUI\dialog_window_op_add.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -204,12 +204,12 @@ class Ui_Dialog(object):
         self.widget_4.setObjectName("widget_4")
         self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.widget_4)
         self.verticalLayout_9.setObjectName("verticalLayout_9")
-        self.radioButton = QtWidgets.QRadioButton(self.widget_4)
-        self.radioButton.setObjectName("radioButton")
-        self.verticalLayout_9.addWidget(self.radioButton)
-        self.radioButton_2 = QtWidgets.QRadioButton(self.widget_4)
-        self.radioButton_2.setObjectName("radioButton_2")
-        self.verticalLayout_9.addWidget(self.radioButton_2)
+        self.radioNeed = QtWidgets.QRadioButton(self.widget_4)
+        self.radioNeed.setObjectName("radioNeed")
+        self.verticalLayout_9.addWidget(self.radioNeed)
+        self.radioNotNeed = QtWidgets.QRadioButton(self.widget_4)
+        self.radioNotNeed.setObjectName("radioNotNeed")
+        self.verticalLayout_9.addWidget(self.radioNotNeed)
         self.verticalLayout_10.addWidget(self.widget_4)
         self.horizontalLayout_8 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
@@ -243,8 +243,8 @@ class Ui_Dialog(object):
         self.radioDSTALL.setText(_translate("Dialog", "Все порты"))
         self.radioDSTPort.setText(_translate("Dialog", "Номер порта"))
         self.radioDSTPorts.setText(_translate("Dialog", "Диапозон"))
-        self.radioButton.setText(_translate("Dialog", "Важный "))
-        self.radioButton_2.setText(_translate("Dialog", "Вспомогательный"))
+        self.radioNeed.setText(_translate("Dialog", "Важный "))
+        self.radioNotNeed.setText(_translate("Dialog", "Вспомогательный"))
         self.pushAdd.setText(_translate("Dialog", "Добавить"))
         self.pushCancel.setText(_translate("Dialog", "Отмена"))
 

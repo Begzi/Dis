@@ -119,7 +119,7 @@ class ClssDialogFilter(QtWidgets.QDialog):
                 protocol = 'UDP'
 
             if dialog.di.radioSRCALL.isChecked():
-                dstProts = 'Все'
+                srcProts = 'Все'
             elif dialog.di.radioSRCPort.isChecked():
                 try:
                     srcProts = str(int(dialog.di.lineSRCPort.text()))
